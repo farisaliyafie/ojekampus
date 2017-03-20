@@ -1,16 +1,11 @@
 #BlueJ class context
 comment0.params=pesan
-comment0.target=boolean\ addPesanan(java.lang.String)
+comment0.target=boolean\ addPesanan(Pesanan)
+comment0.text=\r\nPenambahan\ pesanan\ baru\ kedalam\ catatan\r\n@param\ \ \ \ pesan\ \ \ pesanan\ layanan\ ojek\r\n@return\ \ \ boolean\ untuk\ bukti\ berhasil\ atau\ tidaknya\ penambahan\r\n
 comment1.params=pesan
-comment1.target=boolean\ hapusPesanan(java.lang.String)
-comment2.params=pengguna
-comment2.target=boolean\ hapusPengguna(java.lang.String)
-comment3.params=pengguna
-comment3.target=java.lang.String\ getPesanan(java.lang.String)
-comment4.params=
-comment4.target=java.lang.String[]\ getDatabase()
-comment5.params=pesan
-comment5.target=void\ pesananDibatalkan(java.lang.String)
-comment6.params=pengguna
-comment6.target=void\ penggunaDibatalkan(java.lang.String)
-numComments=7
+comment1.target=boolean\ hapusPesanan(Pesanan)
+comment1.text=\r\nPenghapusan\ pesanan\ dari\ dalam\ catatan\r\n@param\ \ \ \ pesan\ \ \ pesanan\ layanan\ ojek\r\n@return\ \ \ boolean\ untuk\ bukti\ berhasil\ atau\ tidaknya\ penghapusan\r\n
+comment2.params=
+comment2.target=Pesanan\ getPesanan()
+comment2.text=\r\nGetter\ pesanan\ melalui\ catatan\r\n@param\ \ \ \ none\ \ \ \ \ \ \ \ \ \ \ \ nothing\r\n@return\ \ \ list_pesanan\ \ \ \ menyimpanan\ data\ dari\ seluruh\ instansi\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pesanan\ yang\ ditambahkan\r\n
+numComments=3

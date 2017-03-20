@@ -1,38 +1,49 @@
-
 /**
- * Write a description of class DatabasePesanan here.
+ * Class will be used to describe user's detail
  * 
- * @author (Faris Ali Yafie) 
- * @version (25th February 2017)
+ * @author (Faris Ali Yafie)
+ * @version (4 Maret 2017)
  */
 public class DatabasePesanan
 {
-    private static String[] listPesanan;
-    
-    public boolean addPesanan(String pesan){
-        return false;
-    }
-    
-    public static boolean hapusPesanan(String pesan){
-        return false;
-    }
-    
-    public static boolean hapusPengguna(String pengguna){
-        return false;
-    }
+   
+    private static Pesanan list_pesanan; 
 
-    public static String getPesanan(String pengguna){
-        return null;
-    }
-
-    public static String[] getDatabase(){
-        return null;
+    /**
+     *Penambahan pesanan baru kedalam catatan
+     *@param    pesan   pesanan layanan ojek
+     *@return   boolean untuk bukti berhasil atau tidaknya penambahan
+     */
+    public static boolean addPesanan(Pesanan pesan)
+    {
+        list_pesanan=pesan;
+        return true;
     }
     
-    public static void pesananDibatalkan(String pesan){
+    /**
+     *Penghapusan pesanan dari dalam catatan
+     *@param    pesan   pesanan layanan ojek
+     *@return   boolean untuk bukti berhasil atau tidaknya penghapusan
+     */
+    public static boolean hapusPesanan(Pesanan pesan)
+    {
+        list_pesanan=null;
+        return true;
     }
-
-    public static void penggunaDibatalkan(String pengguna){
+     
+    /**
+     *Getter pesanan melalui catatan
+     *@param    none            nothing
+     *@return   list_pesanan    menyimpanan data dari seluruh instansi
+     *                          pesanan yang ditambahkan
+     */
+    public static Pesanan getPesanan()
+    {
+        return list_pesanan;
     }
+    
+ 
+    
 
+    
 }

@@ -1,16 +1,15 @@
 
 /**
  * Abstract class User - write a description of the class here
- * 
- * @author (Faris Ali Yafie) 
- * @version (25th February 2017)
+ * @author (Faris Ali Yafie)
+ * @version (4 Maret 2017)
  */
 public abstract class User
 {
-    protected int id;
-    protected String nama;
+    private int id;
+    private String nama;
    
-    public User (int id, String[] nama){
+    public User(int id, String[] nama){
     }
     
     public int getID (){

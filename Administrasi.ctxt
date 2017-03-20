@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=pesan\ layanan
+comment0.target=void\ pesananDitugaskan(Pesanan,\ Ojek)
+comment1.params=pesan\ pelayan
+comment1.target=void\ ojekAmbilPesanan(Pesanan,\ Ojek)
+comment2.params=Pelayan
+comment2.target=void\ ojekLepasPesanan(Ojek)
+comment3.params=Pelayan
+comment3.target=void\ pesananDibatalkan(Ojek)
+comment4.params=Pelayan
+comment4.target=void\ pesananSelesai(Ojek)
+comment5.params=pesan
+comment5.target=void\ pesananDibatalkan(Pesanan)
+comment6.params=pesan
+comment6.target=void\ pesananSelesai(Pesanan)
+comment7.params=
+comment7.target=Administrasi()
+comment7.text=\r\n\ Constructor\ for\ objects\ of\ class\ Administrasi\r\n
+comment8.params=y
+comment8.target=int\ sampleMethod(int)
+comment8.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
+numComments=9

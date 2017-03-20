@@ -1,68 +1,102 @@
 /**
- * Write a description of class DatabaseUser here.
+ * Class will be used to describe user's detail
  * 
- * @author (Faris Ali Yafie) 
- * @version (25th February 2017)
+ * @author (Faris Ali Yafie)
+ * @version (4 Maret 2017)
  */
+
 public class DatabaseUser
 {
     // instance variables - replace the example below with your own
-    private static String[] pelanggan_database;
-    private static String[] ojek_database;
-    private static int id_ojek_terakhir;
-    private static int id_pelanggan_terakhir;
+    private static Pelanggan pelanggan_database;
+    private static Ojek ojek_database;
+    private static int id_ojek_terakhir = 1;
+    private static int id_pelanggan_terakhir = 1;
 
     /**
-     * Constructor for objects of class DatabaseUser
+     *Penammbahan pelanggan ke database
+     *@param    baru    Pengguna layanan OjeKampus
+     *@return   boolean bukti berhasil atau tidaknya proses penambahan
      */
-    public static boolean addPelanggan(String baru)
+    public static boolean addPelanggan(Pelanggan baru)
     {
-        // initialise instance variables
-        return false;
-    }
-
-    public static boolean removePelanggan (int id)
-    {
-        return false;
+        pelanggan_database=baru;
+        System.out.println("Pelanggan berhasil ditambahkan");
+        return true;
     }
     
-    public static boolean addOjek (String baru)
+    /**
+     *Penghapusan data pelanggan
+     *@param    id      nomor identitas pelanggan
+     *@return   boolean bukti berhasil atau tidaknya penghapusan
+     */
+    public static boolean removePelanggan(int id)
     {
-        return false;
-    }
-   
-    public static boolean removeOjek (int id)
-    {
-        return false;
-    }
-    
-    public static int getIDOjekTerakhir ()
-    {
-        return 0;
+        pelanggan_database=null;
+        return true;
     }
     
-    public static int getIDPelangganTerakhir ()
+    /**
+     *Penammbahan ojek ke database
+     *@param    baru   instansi ojek yang ditambahkan
+     *@return   boolean bukti berhasil atau tidaknya proses penambahan
+     */
+    public static boolean addOjek(Ojek baru) 
     {
-        return 0;
+        ojek_database=baru;
+        System.out.println("Ojek berhasil ditambahkan");
+        return true;
     }
     
-    public static String getUserOjek (int id)
+    /**
+     *Penghapusan ojek dari pelanggan
+     *@param    id      nomor identitas ojek
+     *@return   boolean bukti berhasil atau tidaknya penghapusan
+     */
+    public static boolean removeOjek(int id)
     {
-        return null;
+        ojek_database=null;
+        return true;
     }
     
-    public static String[] getOjekDatabase ()
+    /**
+     *Mendapatkan nomor identitas ojek terakhir
+     *@param    none                nothing
+     *@return   id_ojek_terakhir    nomor identitas ojek terakhir
+     */
+    public static int getIDOjekTerakhir()
     {
-        return null;
+        return id_ojek_terakhir;
     }
     
-    public static String getUserPelanggan (int id)
+    /**
+     *Mendapatkan nomor identitas pelanggan terakhir
+     *@param    none                    nothing
+     *@return   id_pelanggan_terakhir   no id pelanggan terakhir
+     */
+    public static int getIDPelangganTerakhir()
     {
-        return null;
+        return id_pelanggan_terakhir;
     }
     
-    public static String[] getPelangganDatabase ()
+    /**
+     *Mendapatkan informasi ojek
+     *@param    none            nothing
+     *@return   ojek_database   ojek
+     */
+    public static Ojek getUserOjek()
     {
-        return null;
+        return ojek_database;
     }
+    
+    /**
+     *  Mendapatkan informasi pelanggan
+     *  @param  none               nothing
+     *  @return pelanggan_database pengguna ojek
+     */
+    public static Pelanggan getUserPelanggan()
+    {
+        return pelanggan_database;
+    }
+    
 }

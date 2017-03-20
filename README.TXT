@@ -5,8 +5,12 @@ all he/she needs to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
 PROJECT TITLE: OjeKampus
-PURPOSE OF PROJECT: Module 1
-VERSION or DATE: 25th February 2017
-HOW TO START THIS PROJECT: with GitHub, BlueJ, and JDK
-AUTHORS: Faris Ali Yafie
-USER INSTRUCTIONS: Tomi
+PURPOSE OF PROJECT: Creating a system where user can order ojek by online in University environment
+VERSION or DATE: 0.1
+HOW TO START THIS PROJECT: not useable in this version
+AUTHORS: Ezra Tigana
+USER INSTRUCTIONS: not useable in this version
+
+TO DO:
+- Adding detailed function to each class
+- Fixing duplicate method name in DatabasePesanan Class
