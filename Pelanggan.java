@@ -1,5 +1,7 @@
 import java.util.regex.*;
 import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 
 /**
  * Class will be used to describe user's detail
@@ -60,7 +62,11 @@ public class Pelanggan
      */
     public boolean setTelefon(String telefon)
     {
-        return true;
+       this.telefon = telefon; 
+       String telefonPattern="^[0-9]{10,13}$"; //10-13 digit angka
+       Pattern pattern = Pattern.compile(telefonPattern);
+       Matcher regexMatcher = pattern.matcher(telefon);
+       return regexMatcher.find();
     }    
 
     /**
@@ -86,7 +92,8 @@ public class Pelanggan
      *@retun    none    nothing
      */
     public void setDOB (int day, int month, int year){
-        this.dob=dob;
+       this.dob=dob;
+       this.dob = new GregorianCalendar(year, month-1, day).getTime(); 
     }     
     
     /**
@@ -112,9 +119,19 @@ public class Pelanggan
     /**
      *Print informasi identitas dan nama pelanggan
      */
+    /*
     public void printData()
     {
         System.out.println("ID Pelanggan : " + this.id);
         System.out.println("Nama : " + this.nama);
     }
+    
+   /**
+    * Method untuk mencetak ID dan Nama Pelanggan.
+    */
+   public String toString ()
+   {
+         return "Pelanggan bernama " +nama + " dan ID " +id + " dengan nomor telfon " +telefon + " pelanggan " + " mengirim pesan";
+        
+   }
 }

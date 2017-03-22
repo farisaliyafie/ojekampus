@@ -52,7 +52,11 @@ public class Ojek
     }
     
     public boolean setTelefon (String telefon){
-        return false;
+        this.telefon = telefon; 
+        String telefonPattern="^[0-9]{10,13}$"; //10-13 digit angka 
+        Pattern pattern = Pattern.compile(telefonPattern);
+        Matcher regexMatcher = pattern.matcher(telefon);
+        return regexMatcher.find();
     }    
     
     public boolean setEmail (String email){
@@ -68,12 +72,16 @@ public class Ojek
     }
     
     public boolean setNoPlat (String no_plat){
-        return false;
+        this.no_plat = no_plat;
+        String platPattern="^[A-Z]{1,2}[0-9]{1,4}[A-Z]{1,3}$";
+        Pattern pattern = Pattern.compile(platPattern);
+        Matcher regexMatcher = pattern.matcher(no_plat);
+        return regexMatcher.find();
     }
     
     public void setDOB (int day, int month, int year){
         this.dob=dob;
-        GregorianCalendar g_calendar=new GregorianCalendar(year, month, day);
+        this.dob=new GregorianCalendar(year, month-1, day).getTime();
     }
     
     /**
@@ -134,13 +142,18 @@ public class Ojek
     }
     
     public Date getDOB(){
-        int year           = g_calendar.get(g_calendar.YEAR);
-        int month          = g_calendar.get(g_calendar.MONTH);
-        int dayOfMonth     = g_calendar.get(g_calendar.DAY_OF_MONTH);
+        //int year           = g_calendar.get(g_calendar.YEAR);
+        //int month          = g_calendar.get(g_calendar.MONTH);
+        //int dayOfMonth     = g_calendar.get(g_calendar.DAY_OF_MONTH);
         
-        dob=g_calendar.getTime();
+        //dob=g_calendar.getTime();
         SimpleDateFormat tgl= new SimpleDateFormat("yyyy MM dd");
-        tgl= new SimpleDateFormat("yyyy--MM--dd");
+        
+        //System.out.print("Tanggal manual : ");
+        //System.out.println(year+"/"+month+"/"+dayOfMonth);
+        
+        System.out.println("Tanggal dengan SimpleDateFormat");
+        tgl= new SimpleDateFormat("yyyy/MM/dd");
         System.out.println(tgl.format(dob));
         return dob;
     }
@@ -177,9 +190,23 @@ public class Ojek
      * @param   none    nothing
      * @return  none 
      */
+    /*
     public void printData(){
         System.out.println("ID Ojek : " + this.id);
         System.out.println("Nama : " + this.nama);
         System.out.println("Status : " + this.status);
     }
+    
+    /**
+    * Method untuk mencetak id, nama, posisi sekarang.
+    */
+    public String toString ()
+    {
+		if (pesanan_sekarang != null){
+        	return "Ojek dengan nama " +nama + " dan ID " +id + " dengan status " +status + " " +pesanan_sekarang.getPelanggan().getNama();
+    	}
+		else {
+			return "Ojek dengan nama " +nama + " dan ID " +id + " dengan status " +status;
+		}
+	}    
 }

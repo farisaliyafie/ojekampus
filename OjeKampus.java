@@ -6,6 +6,13 @@
  */
 public class OjeKampus
 {
+    public static Ojek ojek_farisali;
+    public static DatabaseUser database;
+    public static DatabasePesanan pes_database;
+    public static Lokasi ojek_lokasi, per_yafie_awal, per_yafie_akhir;
+    public static Pelanggan p_herdianto;
+    public static Pesanan pes_herdianto;
+    public static Administrasi administrasi;    
     /**
      * Fungsi utama OjeKampus
      * @param   args    Array string yang dapat menjadi argumen, default:null
@@ -18,15 +25,15 @@ public class OjeKampus
         "yafie");
         Lokasi per_yafie_awal = new Lokasi("Bekasi", 5, 7, "perum");
         Lokasi per_yafie_akhir = new Lokasi("Bandung", 6, 7, "nangor");
-        Pesanan pes_yafie = new Pesanan(p_yafie, "Antar Orang", per_yafie_awal, per_yafie_akhir,
+        Pesanan pes_yafie = new Pesanan(p_yafie, TipeLayanan.AntarOrang, per_yafie_awal, per_yafie_akhir,
         "eka", "pabe", 100000);
         
         DatabaseUser.addOjek(ojek_farisali);
         DatabaseUser.addPelanggan(p_yafie);
         DatabasePesanan.addPesanan(pes_yafie);
         
-        DatabaseUser.getUserOjek().printData();
-        DatabaseUser.getUserPelanggan().printData();
+        DatabaseUser.getUserOjek().toString();
+        DatabaseUser.getUserPelanggan().toString();
         
        
         //tugas 4
@@ -40,7 +47,7 @@ public class OjeKampus
         o_pelanggan=new Pelanggan(2, "Faris");         //nilai pada objek Pelanggan
         o_lokasi1=new Lokasi("Bekasi", 65, 57,"perum"); //nilai untuk lokasi pertama
         o_lokasi2=new Lokasi("Depok", 76, 67, "UI");    //nilai untuk lokasi kedua
-        o_pesanan=new Pesanan(o_pelanggan, "Antar orang" , o_lokasi1, o_lokasi2, "Ali", "Yafie", 100);
+        o_pesanan=new Pesanan(o_pelanggan, TipeLayanan.AntarOrang , o_lokasi1, o_lokasi2, "Ali", "Yafie", 100);
         
         //B
         DatabaseUser o_dbuser=new DatabaseUser();
@@ -67,5 +74,17 @@ public class OjeKampus
             o_admin.pesananSelesai(o_ojek);
             System.out.println("Pesanan telah selesai dilakukan");
         }
+        
+        //7
+        Ojek ojek_7=new Ojek(2, "Faris", new Lokasi("Pocin", 14, 10, "Depok"));
+        ojek_7.setNama("Faris");
+        ojek_7.setNoPlat("B124UA");
+        Pelanggan pelanggan_7=new Pelanggan(2, "Ali Yafie");
+        pelanggan_7.setNama("Ali Yafie");
+        pelanggan_7.setTelefon("08966767100");
+        
+        System.out.println("Print hasil objek :");
+        System.out.println("Objek ojek :"+ojek_7);
+        System.out.println("Objek pelanggan :"+pelanggan_7);
     }
 }

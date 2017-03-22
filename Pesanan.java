@@ -12,7 +12,7 @@ public class Pesanan
     private String pelanggan_awal;
     private String pelanggan_akhir;
     private double biaya;
-    private String layanan;
+    private TipeLayanan layanan;
     private Lokasi lokasi_awal;
     private Lokasi lokasi_akhir;
     private boolean diproses = false;
@@ -30,7 +30,7 @@ public class Pesanan
      * @param   biaya           harga pesanan yang diberikan
      * @return  none            nothing
      */
-    public Pesanan(Pelanggan pengguna, String layanan, Lokasi 
+    public Pesanan(Pelanggan pengguna, TipeLayanan layanan, Lokasi 
                    lokasi_awal, Lokasi lokasi_akhir, String
                    pelanggan_awal, String pelanggan_akhir, double biaya)
     {
@@ -43,6 +43,29 @@ public class Pesanan
         this.biaya=biaya;
     }
 
+   public Pesanan(Pelanggan pengguna, TipeLayanan layanan, 
+                  Lokasi lokasi_awal, Lokasi lokasi_akhir, 
+                  String pelanggan_awal){
+       // inisialisasi untuk instance variables pada constructor kelas Pesanan
+       this.pengguna = pengguna;
+       this.layanan = layanan;
+       this.lokasi_awal = lokasi_awal;
+       this.lokasi_akhir = lokasi_akhir;
+       this.pelanggan_awal = pelanggan_awal;
+   }
+      
+   public Pesanan(Pelanggan pengguna, TipeLayanan layanan, 
+                  Lokasi lokasi_awal, Lokasi lokasi_akhir, 
+                  String pelanggan_awal, String pelanggan_akhir){
+       // inisialisasi untuk instance variables pada constructor kelas Pesanan
+       this.pengguna = pengguna;
+       this.layanan = layanan;
+       this.lokasi_awal = lokasi_awal;
+       this.lokasi_akhir = lokasi_akhir;
+       this.pelanggan_awal = pelanggan_awal;
+       this.pelanggan_akhir = pelanggan_akhir;
+   }    
+    
     public Ojek getPelayan()
     {
         return pelayan;
@@ -103,7 +126,7 @@ public class Pesanan
      * @param   none    nothing
      * @return  layanan tipe layanan yang dipesan
      */
-    public String getTipeLayanan()
+    public TipeLayanan getTipeLayanan()
     {
         return layanan;
     }
@@ -143,6 +166,7 @@ public class Pesanan
      * @param   none    nothing
      * @return  none
      */
+    /*
     public void printData()
     {
         System.out.println("Lokasi awal         : " + this.lokasi_awal.getNama());
@@ -153,6 +177,7 @@ public class Pesanan
         System.out.println("Status diproses     : " + this.diproses);
         System.out.println("Status selesai      : " + this.selesai);
     }
+    */
     
     public void setStatusDiproses(boolean diproses){
         this.diproses=diproses;
@@ -162,7 +187,7 @@ public class Pesanan
         this.selesai=selesai;
     }
     
-    public void setTipeLayanan(String layanan){
+    public void setTipeLayanan(TipeLayanan layanan){
         this.layanan=layanan;
     }
     
@@ -178,4 +203,36 @@ public class Pesanan
         return false;
     }
 
+    /**
+    * Method untuk mencetak lokasi awal, akhir dan tipe layanan.
+    */
+    public String toString (){
+       String final_status = "KOSONG";
+       if (diproses == true && selesai == false){
+           final_status = "DIPROSES";
+       }
+       else if (diproses == false && selesai == false){
+           final_status = "KOSONG";
+       }
+       else if (diproses == false && selesai == true){
+           final_status = "SELESAI";
+       }
+       
+       if (pelayan == null && pelanggan_akhir != null){
+               return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal + " di " + lokasi_awal.getNama() + " ke " + pelanggan_akhir + " di " + 
+               lokasi_akhir.getNama() + " dengan layanan " + layanan + " status " + final_status + " || ");
+           }
+       else if(pelayan == null && pelanggan_akhir == null){
+               return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal + " di " + lokasi_awal.getNama() + " ke "+ lokasi_akhir.getNama() + 
+               " dengan layanan " + layanan +" status " + final_status + " || ");
+       }
+       else if (pelayan != null && pelanggan_akhir != null){
+               return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal + " di " + lokasi_awal.getNama() + " ke " + pelanggan_akhir + " di " 
+               + lokasi_akhir.getNama() + " dengan layanan " + layanan + " status " + final_status + " || Diproses oleh " + pelayan.getNama());
+       }
+       else{
+               return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal + " di " + lokasi_awal.getNama() + " ke "+ lokasi_akhir.getNama() 
+               + " dengan layanan " + layanan +" status " + final_status + " || Diproses oleh " + pelayan.getNama());
+       }
+       }
 }
