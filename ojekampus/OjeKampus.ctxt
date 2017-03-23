@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=args
+comment0.target=void\ main(java.lang.String[])
+comment0.text=\r\n\ Fungsi\ utama\ OjeKampus\r\n\ @param\ \ \ args\ \ \ \ Array\ string\ yang\ dapat\ menjadi\ argumen,\ default\:null\r\n\ @return\ \ none\r\n
+numComments=1

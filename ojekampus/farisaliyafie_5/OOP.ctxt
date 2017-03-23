@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=OOP()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ OOP\r\n\ Metode\ yang\ pertama\ kali\ di\ panggil\ ketika\ sebuah\ objek\ OOP\ dicbuat.\r\n\ Metode\ ini\ akan\ request\ input\ yang\ akan\ disimpan\ pada\ arraylist\ dari\ objek.\r\n
+comment1.params=
+comment1.target=java.util.ArrayList\ getMahasiswa()
+comment1.text=\r\n\ Getter\ List\ siswa\r\n
+comment2.params=
+comment2.target=void\ main()
+comment2.text=\r\n\ Metode\ main\ yang\ akan\ dipanggil\ ketika\ program\ dikompilasikan.\r\n\ program\ akan\ membuat\ sebuah\ objek\ OOP\ yang\ akan\ meminta\ input\ pada\ array\ dari\ objek\r\n\ dan\ melakukan\ sorting\ pada\ array\ tersebut.\r\n
+numComments=3

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=arrayInt
+comment0.target=int[]\ sortArray(int[])
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=void\ isi()
+comment3.params=
+comment3.target=Array()
+comment3.text=\r\n\ Constructor\ for\ objects\ of\ class\ Array\r\n
+numComments=4

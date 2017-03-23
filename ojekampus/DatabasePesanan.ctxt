@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=pesan
+comment0.target=boolean\ addPesanan(Pesanan)
+comment0.text=\r\nPenambahan\ pesanan\ baru\ kedalam\ catatan\r\n@param\ \ \ \ pesan\ \ \ pesanan\ layanan\ ojek\r\n@return\ \ \ boolean\ untuk\ bukti\ berhasil\ atau\ tidaknya\ penambahan\r\n
+comment1.params=pesan
+comment1.target=boolean\ hapusPesanan(Pesanan)
+comment1.text=\r\nPenghapusan\ pesanan\ dari\ dalam\ catatan\r\n@param\ \ \ \ pesan\ \ \ pesanan\ layanan\ ojek\r\n@return\ \ \ boolean\ untuk\ bukti\ berhasil\ atau\ tidaknya\ penghapusan\r\n
+comment2.params=
+comment2.target=Pesanan\ getPesanan()
+comment2.text=\r\nGetter\ pesanan\ melalui\ catatan\r\n@param\ \ \ \ none\ \ \ \ \ \ \ \ \ \ \ \ nothing\r\n@return\ \ \ list_pesanan\ \ \ \ menyimpanan\ data\ dari\ seluruh\ instansi\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pesanan\ yang\ ditambahkan\r\n
+numComments=3
