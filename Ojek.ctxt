@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=id\ nama\ posisi_sekarang
-comment0.target=Ojek(int,\ java.lang.String,\ Lokasi)
+comment0.params=id\ nama\ posisi_sekarang\ no_plat
+comment0.target=Ojek(int,\ java.lang.String,\ Lokasi,\ java.lang.String)
 comment0.text=\r\n\ Konstruktor\ kelas\ ojek\r\n\ @param\ \ \ id\ \ \ \ \ \ \ \ \ \ \ \ \ \ no\ identitas\ pengemudi\r\n\ @param\ \ \ nama\ \ \ \ \ \ \ \ \ \ \ \ nama\ pengemudi\r\n\ @param\ \ \ posisi_sekarang\ lokasi\ pengemudi\ sekarang\r\n\ @return\ \ none\ \ \ \ \ \ \ \ \ \ \ \ nothing\r\n
 comment1.params=id
 comment1.target=void\ setID(int)

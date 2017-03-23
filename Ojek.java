@@ -27,10 +27,11 @@ public class Ojek
      * @param   posisi_sekarang lokasi pengemudi sekarang
      * @return  none            nothing
      */
-    public Ojek(int id, String nama, Lokasi posisi_sekarang){
+    public Ojek(int id, String nama, Lokasi posisi_sekarang, String no_plat){
         this.id=id;
         this.nama=nama;
         this.posisi_sekarang=posisi_sekarang;
+        this.no_plat=no_plat;
     }
 
     /**
@@ -203,10 +204,10 @@ public class Ojek
     public String toString ()
     {
 		if (pesanan_sekarang != null){
-        	return "Ojek dengan nama " +nama + " dan ID " +id + " dengan status " +status + " " +pesanan_sekarang.getPelanggan().getNama();
+        	return "Ojek dengan nama " +nama + " dan ID " +id + " dengan status " +status + " dengan no plat "+no_plat + ""/*+pesanan_sekarang.getPelanggan().getNama()*/;
     	}
 		else {
-			return "Ojek dengan nama " +nama + " dan ID " +id + " dengan status " +status;
+			return "Ojek dengan nama " +nama + " dan ID " +id + " dengan status " +status+ " dengan no plat "+no_plat + "";
 		}
 	}    
 }

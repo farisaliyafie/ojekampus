@@ -20,7 +20,7 @@ public class OjeKampus
      */
     public static void main(String[] args) {
         Ojek ojek_farisali = new Ojek(DatabaseUser.getIDPelangganTerakhir()
-        , "farisali", new Lokasi("UI", 14, 06, "Depok"));
+        , "farisali", new Lokasi("UI", 14, 06, "Depok"), "B124UA");
         Pelanggan p_yafie = new Pelanggan(DatabaseUser.getIDPelangganTerakhir(),
         "yafie");
         Lokasi per_yafie_awal = new Lokasi("Bekasi", 5, 7, "perum");
@@ -43,7 +43,7 @@ public class OjeKampus
         Lokasi o_lokasi1;       //objek lokasi pertama
         Lokasi o_lokasi2;       //objek lokasi kedua
         Pesanan o_pesanan;      //objek untuk Pesanan
-        o_ojek=new Ojek(14, "Aye", new Lokasi("Bekasi", 57, 65, "Rawa"));
+        o_ojek=new Ojek(14, "Aye", new Lokasi("Bekasi", 57, 65, "Rawa"), "B124UA");
         o_pelanggan=new Pelanggan(2, "Faris");         //nilai pada objek Pelanggan
         o_lokasi1=new Lokasi("Bekasi", 65, 57,"perum"); //nilai untuk lokasi pertama
         o_lokasi2=new Lokasi("Depok", 76, 67, "UI");    //nilai untuk lokasi kedua
@@ -76,7 +76,7 @@ public class OjeKampus
         }
         
         //7
-        Ojek ojek_7=new Ojek(2, "Faris", new Lokasi("Pocin", 14, 10, "Depok"));
+        Ojek ojek_7=new Ojek(2, "Faris", new Lokasi("Pocin", 14, 10, "Depok"), "B124UA");
         ojek_7.setNama("Faris");
         ojek_7.setNoPlat("B124UA");
         Pelanggan pelanggan_7=new Pelanggan(2, "Ali Yafie");
@@ -85,6 +85,7 @@ public class OjeKampus
         
         System.out.println("Print hasil objek :");
         System.out.println("Objek ojek :"+ojek_7);
+        System.out.println("No Plat :");
         System.out.println("Objek pelanggan :"+pelanggan_7);
     }
 }
