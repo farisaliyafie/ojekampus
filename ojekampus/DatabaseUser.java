@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Class will be used to describe user's detail
  * 
@@ -8,11 +10,11 @@
 public class DatabaseUser
 {
     // instance variables - replace the example below with your own
-    private static Pelanggan pelanggan_database;
-    private static Ojek ojek_database;
-    private static int id_ojek_terakhir = 1;
-    private static int id_pelanggan_terakhir = 1;
-
+    private static int id_ojek_terakhir;
+    private static int id_pelanggan_terakhir;
+    private static ArrayList<Ojek> ojek_database=new ArrayList<>();
+    private static ArrayList<Pelanggan> pelanggan_database=new ArrayList<>();
+    
     /**
      *Penammbahan pelanggan ke database
      *@param    baru    Pengguna layanan OjeKampus
@@ -20,7 +22,13 @@ public class DatabaseUser
      */
     public static boolean addPelanggan(Pelanggan baru)
     {
-        pelanggan_database=baru;
+        for(Pelanggan pengguna_temp : pelanggan_database){
+            if(pengguna_temp.equals(baru)){
+                System.out.println("Penambahan pelanggan gagal");
+                 return false;
+            }
+        }
+        pelanggan_database.add(baru);
         System.out.println("Pelanggan berhasil ditambahkan");
         return true;
     }
@@ -32,7 +40,13 @@ public class DatabaseUser
      */
     public static boolean removePelanggan(int id)
     {
-        pelanggan_database=null;
+        Pelanggan pengguna_temp = getUserPelanggan(id);
+        if(pengguna_temp == null){
+            System.out.println("ID tidak terdaftar, penghapusan gagal");
+            return false;
+        }
+        pelanggan_database.remove(pengguna_temp);
+        System.out.println("Penghapusan Pelanggan dengan id " + id + " Berhasil");
         return true;
     }
     
@@ -43,7 +57,13 @@ public class DatabaseUser
      */
     public static boolean addOjek(Ojek baru) 
     {
-        ojek_database=baru;
+        for(Ojek ojek_temp : ojek_database){
+            if(ojek_temp.equals(baru)){
+                System.out.println("Penambahan ojek gagal");
+                 return false;
+            }
+        }
+        ojek_database.add(baru);
         System.out.println("Ojek berhasil ditambahkan");
         return true;
     }
@@ -55,7 +75,13 @@ public class DatabaseUser
      */
     public static boolean removeOjek(int id)
     {
-        ojek_database=null;
+        Ojek ojek_temp = getUserOjek(id);
+        if(ojek_temp == null){
+            System.out.println("ID tidak terdaftar, penghapusan gagal");
+            return false;
+        }
+        ojek_database.remove(ojek_temp);
+        System.out.println("Penghapusan Ojek dengan id " + id + " Berhasil");
         return true;
     }
     
@@ -84,19 +110,46 @@ public class DatabaseUser
      *@param    none            nothing
      *@return   ojek_database   ojek
      */
-    public static Ojek getUserOjek()
+    public static Ojek getUserOjek(int id)
     {
-        return ojek_database;
+        for(Ojek ojek_temp : ojek_database){
+            if(ojek_temp.getID() == id){
+                 return ojek_temp;
+            }
+        }
+        return null;
     }
     
     /**
      *  Mendapatkan informasi pelanggan
-     *  @param  none               nothing
+     *  @param none nothing
      *  @return pelanggan_database pengguna ojek
      */
-    public static Pelanggan getUserPelanggan()
+    public static Pelanggan getUserPelanggan(int id)
     {
-        return pelanggan_database;
+        for(Pelanggan pengguna_temp : pelanggan_database){
+            if(pengguna_temp.getID() == id){
+                 return pengguna_temp;
+            }
+        }
+        return null;
     }
     
+    /**
+     * Metode untuk mendapatkan database dari ojek pada arraylist
+     * @return mengembalikan nilai dari ojek_database untuk dimasukkan dalam
+     * database
+     */
+    public static ArrayList<Ojek> getOjekDatabase(){
+        return ojek_database;
+    }
+    
+    /**
+     * Metode untuk mendapatkan database dari pelanggan pada arraylist
+     * @return mengembalikan nilai dari pelanggan_database untuk dimasukkan dalam
+     * database
+     */
+    public static ArrayList<Pelanggan> getPelangganDatabase(){
+        return pelanggan_database;
+    }
 }

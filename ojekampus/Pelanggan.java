@@ -21,10 +21,11 @@ public class Pelanggan
      *@param    nama    nama pelanggan
      *@return   retun   nothing
      */
-    public Pelanggan(int id, String nama)
+    public Pelanggan(int id, String nama, String telefon)
     {
         this.id=id;
         this.nama=nama;
+        this.setTelefon(telefon);
     }
 
     /**

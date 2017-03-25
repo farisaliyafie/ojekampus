@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Class will be used to describe user's detail
  * 
@@ -7,7 +9,7 @@
 public class DatabasePesanan
 {
    
-    private static Pesanan list_pesanan; 
+    private static ArrayList<Pesanan> list_pesanan=new ArrayList<>(); 
 
     /**
      *Penambahan pesanan baru kedalam catatan
@@ -16,8 +18,35 @@ public class DatabasePesanan
      */
     public static boolean addPesanan(Pesanan pesan)
     {
-        list_pesanan=pesan;
-        return true;
+        Pelanggan pengguna = pesan.getPelanggan();
+        if(getPesanan(pengguna)==null){
+            System.out.println("Pesanan berhasil dilakukan");
+            list_pesanan.add(pesan);
+            return true;
+        }
+        System.out.println("Pesanan gagal");
+        return false;
+    }
+    
+    public static ArrayList<Pesanan> getDatabase()
+    {
+        return list_pesanan;
+    }
+    
+    /**
+     *Getter pesanan melalui catatan
+     *@param    none            nothing
+     *@return   list_pesanan    menyimpanan data dari seluruh instansi
+     *                          pesanan yang ditambahkan
+     */
+    public static Pesanan getPesanan(Pelanggan pengguna)
+    {
+       for(Pesanan pesan : list_pesanan){
+            if(pesan.getPelanggan().equals(pengguna)){
+                 return pesan;
+            }
+       }
+       return null;
     }
     
     /**
@@ -27,23 +56,11 @@ public class DatabasePesanan
      */
     public static boolean hapusPesanan(Pesanan pesan)
     {
-        list_pesanan=null;
+        if(pesan.getPelayan()== null){
+            return false;
+        }
+        list_pesanan.remove(pesan);
         return true;
     }
-     
-    /**
-     *Getter pesanan melalui catatan
-     *@param    none            nothing
-     *@return   list_pesanan    menyimpanan data dari seluruh instansi
-     *                          pesanan yang ditambahkan
-     */
-    public static Pesanan getPesanan()
-    {
-        return list_pesanan;
-    }
-    
- 
-    
-
     
 }

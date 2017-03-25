@@ -20,12 +20,12 @@ public class Lokasi
      * @param   keterangan_lokasi   keterangan lokasi
      * @return  none                nothing
      */
-    public Lokasi(String nama_lokasi, double x, double y, String
+    public Lokasi(double x, double y, String nama_lokasi, String
                   keterangan_lokasi)
     {
-        this.nama_lokasi=nama_lokasi;
         this.x=x;
         this.y=y;
+        this.nama_lokasi=nama_lokasi;
         this.keterangan_lokasi=keterangan_lokasi;
     }
     

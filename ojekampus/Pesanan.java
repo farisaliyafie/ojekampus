@@ -30,41 +30,42 @@ public class Pesanan
      * @param   biaya           harga pesanan yang diberikan
      * @return  none            nothing
      */
-    public Pesanan(Pelanggan pengguna, TipeLayanan layanan, Lokasi 
-                   lokasi_awal, Lokasi lokasi_akhir, String
-                   pelanggan_awal, String pelanggan_akhir, double biaya)
+     public Pesanan(Pelanggan pengguna, TipeLayanan layanan, 
+                    Lokasi lokasi_awal, Lokasi lokasi_akhir, 
+                    String pelanggan_awal, String pelanggan_akhir, 
+                    double biaya)
     {
-        this.pengguna=pengguna;
-        this.layanan=layanan;
-        this.lokasi_awal=lokasi_awal;
-        this.lokasi_akhir=lokasi_akhir;
-        this.pelanggan_awal=pelanggan_awal;
-        this.pelanggan_akhir=pelanggan_akhir;
-        this.biaya=biaya;
+        this.pengguna = pengguna;
+        this.layanan = layanan;
+        this.lokasi_awal = lokasi_awal;
+        this.lokasi_akhir = lokasi_akhir;
+        this.pelanggan_awal = pelanggan_awal;
+        this.pelanggan_akhir = pelanggan_akhir;
+        this.biaya = biaya;
     }
-
-   public Pesanan(Pelanggan pengguna, TipeLayanan layanan, 
-                  Lokasi lokasi_awal, Lokasi lokasi_akhir, 
-                  String pelanggan_awal){
-       // inisialisasi untuk instance variables pada constructor kelas Pesanan
-       this.pengguna = pengguna;
-       this.layanan = layanan;
-       this.lokasi_awal = lokasi_awal;
-       this.lokasi_akhir = lokasi_akhir;
-       this.pelanggan_awal = pelanggan_awal;
-   }
-      
-   public Pesanan(Pelanggan pengguna, TipeLayanan layanan, 
-                  Lokasi lokasi_awal, Lokasi lokasi_akhir, 
-                  String pelanggan_awal, String pelanggan_akhir){
-       // inisialisasi untuk instance variables pada constructor kelas Pesanan
-       this.pengguna = pengguna;
-       this.layanan = layanan;
-       this.lokasi_awal = lokasi_awal;
-       this.lokasi_akhir = lokasi_akhir;
-       this.pelanggan_awal = pelanggan_awal;
-       this.pelanggan_akhir = pelanggan_akhir;
-   }    
+    
+    public Pesanan(Pelanggan pengguna, TipeLayanan layanan, 
+                    Lokasi lokasi_awal, Lokasi lokasi_akhir, 
+                    String pelanggan_awal)
+    {
+        this.pengguna = pengguna;
+        this.layanan = layanan;
+        this.lokasi_awal = lokasi_awal;
+        this.lokasi_akhir = lokasi_akhir;
+        this.pelanggan_awal = pelanggan_awal;
+    }
+    
+    public Pesanan(Pelanggan pengguna, TipeLayanan layanan, 
+                    Lokasi lokasi_awal, Lokasi lokasi_akhir, 
+                    String pelanggan_awal, String pelanggan_akhir)
+    {
+        this.pengguna = pengguna;
+        this.layanan = layanan;
+        this.lokasi_awal = lokasi_awal;
+        this.lokasi_akhir = lokasi_akhir;
+        this.pelanggan_awal = pelanggan_awal;
+        this.pelanggan_akhir = pelanggan_akhir;
+    }    
     
     public Ojek getPelayan()
     {
@@ -208,31 +209,52 @@ public class Pesanan
     */
     public String toString (){
        String final_status = "KOSONG";
-       if (diproses == true && selesai == false){
-           final_status = "DIPROSES";
-       }
-       else if (diproses == false && selesai == false){
-           final_status = "KOSONG";
-       }
-       else if (diproses == false && selesai == true){
-           final_status = "SELESAI";
-       }
-       
-       if (pelayan == null && pelanggan_akhir != null){
-               return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal + " di " + lokasi_awal.getNama() + " ke " + pelanggan_akhir + " di " + 
-               lokasi_akhir.getNama() + " dengan layanan " + layanan + " status " + final_status + " || ");
-           }
-       else if(pelayan == null && pelanggan_akhir == null){
-               return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal + " di " + lokasi_awal.getNama() + " ke "+ lokasi_akhir.getNama() + 
-               " dengan layanan " + layanan +" status " + final_status + " || ");
-       }
-       else if (pelayan != null && pelanggan_akhir != null){
-               return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal + " di " + lokasi_awal.getNama() + " ke " + pelanggan_akhir + " di " 
-               + lokasi_akhir.getNama() + " dengan layanan " + layanan + " status " + final_status + " || Diproses oleh " + pelayan.getNama());
-       }
-       else{
-               return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal + " di " + lokasi_awal.getNama() + " ke "+ lokasi_akhir.getNama() 
-               + " dengan layanan " + layanan +" status " + final_status + " || Diproses oleh " + pelayan.getNama());
-       }
+        if(getStatusDiproses()==true && getStatusSelesai()==false)
+        {
+            final_status = "DIPROSES";
+        }
+        else if(getStatusDiproses()==false && getStatusSelesai()==false)
+        {
+            final_status = "KOSONG";
+        }
+        else if(getStatusDiproses()==false && getStatusSelesai()==true)
+        {
+            final_status = "SELESAI";
+        }
+        
+        if(pelayan==null)
+        {
+            if(pelanggan_akhir != null)
+            {
+                return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal 
+                + " di " + lokasi_awal.getNama() + " ke " + pelanggan_akhir + " di " + 
+                lokasi_akhir.getNama() + " dengan layanan " + layanan + " status " 
+                + final_status + "|");
+            }
+            else
+            {
+                return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal 
+                + " di " + lokasi_awal.getNama() + " ke " + lokasi_akhir.getNama() + 
+                " dengan layanan " + layanan + " status " 
+                + final_status + "|");
+            }
+        }
+        else
+        {
+            if(pelanggan_akhir != null)
+            {
+                return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal 
+                + " di " + lokasi_awal.getNama() + " ke " + pelanggan_akhir + " di " + 
+                lokasi_akhir.getNama() + " dengan layanan " + layanan + " status " 
+                + final_status + " | Diproses oleh " + pelayan.getNama());
+            }
+            else
+            {
+                return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal 
+                + " di " + lokasi_awal.getNama() + " ke "+ lokasi_akhir.getNama() + 
+                " dengan layanan " + layanan + " status " 
+                + final_status + " | Diproses oleh " + pelayan.getNama());
+            }
+        }
        }
 }
