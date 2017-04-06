@@ -4,8 +4,8 @@ package farisaliyafie_6;
 /**
  * Write a description of class Hero here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Faris Ali Yafie) 
+ * @version (case study modul 6)
  */
 public class Hero extends Entity
 {
@@ -18,13 +18,13 @@ public class Hero extends Entity
     }
     
     public void quote(){
-        System.out.println("Aku tak boleh kalah!");
+        System.out.println("Aku akan mengalahkanmu!");
     }
     
     public void fullHP(){
-        setPower();
         maxHP=(15*level+5)/4;
         strength=(15*level+5)/8;
+        setPower();
     }
     
     private int x;

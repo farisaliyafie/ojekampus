@@ -4,8 +4,8 @@ package farisaliyafie_6;
 /**
  * Abstract class Entity - write a description of the class here
  * 
- * @author (your name here)
- * @version (version number or date here)
+ * @author (Faris Ali Yafie) 
+ * @version (case study modul 6)
  */
 public abstract class Entity implements Wear
 {
@@ -29,14 +29,16 @@ public abstract class Entity implements Wear
     
     protected void setHP(double diff){
         health-=diff;
-        if(health<0){
+        if(health<=0){
             dead=true;
         }
         
     }
     
     protected int getDamage(double def, double opRank){
-        return 0;
+        int damage=1;
+        damage=(int)((1+(((2*level/5)+2)*rank.getAttackPower()*weaponDmg/def)/50)*rank.getRank()*opRank);
+        return damage;
     }
     
     protected void setPower(){
@@ -76,23 +78,15 @@ public abstract class Entity implements Wear
         return defense;
     }
     
-    protected void fullHP(){
-        
-    }
-    
-    protected void quote(){
-        
-    }
-    
     public void setWeapon (String name, double dmg){
-        this.name=name;
-        dmg=dmg;
+        this.weapon=name;
+        this.weaponDmg=dmg;
         setPower();
     }
     
     public void setArmor(String name, double def){
-        this.name=name;
-        def=def;
+        this.armor=name;
+        this.armorDef=def;
         setPower();
     }
     
@@ -105,12 +99,16 @@ public abstract class Entity implements Wear
     }
     
     public double getWeaponDmg(){
-        return weaponDmg;
+        return 0.0;
     }
     
     public double getArmorDef(){
-        return armorDef;
+        return 0.0;
     }
+    
+    protected abstract void fullHP();
+    
+    protected abstract void quote();
     
     /**
      * An example of a method - replace this comment with your own

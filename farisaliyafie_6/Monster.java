@@ -4,8 +4,8 @@ package farisaliyafie_6;
 /**
  * Write a description of class Monster here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Faris Ali Yafie) 
+ * @version (case study modul 6)
  */
 public class Monster extends Entity
 {
@@ -18,13 +18,14 @@ public class Monster extends Entity
     }
     
     public void quote(){
-        System.out.println("Kau pasti kalah!");
+        System.out.println("Kau tidak akan bisa mengalahkanku!");
     }
     
     public void fullHP(){
         setPower();
         maxHP=(level*level/10)+5;
         strength=((level*level/10)+5)/2;
+        setPower();
     }
     
     private int x;

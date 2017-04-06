@@ -4,15 +4,15 @@ package farisaliyafie_6;
 /**
  * Write a description of class Damager here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Faris Ali Yafie) 
+ * @version (case study modul 6)
  */
 public class Damager implements Rank
 {
     // instance variables - replace the example below with your own
     private String attackName;
     private int attackPower;
-    private static double rank;
+    private static double rank=1.25;
     
     /**
      * Constructor for objects of class Damager

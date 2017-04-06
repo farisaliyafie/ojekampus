@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Play()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Play\r\n
+comment1.params=
+comment1.target=void\ initialize()
+comment2.params=
+comment2.target=void\ initializeEnemy()
+comment3.params=name\ power
+comment3.target=Rank\ setRank(java.lang.String,\ int)
+comment4.params=attacker\ defender
+comment4.target=void\ attackTurn(Entity,\ Entity)
+comment5.params=args
+comment5.target=void\ main(java.lang.String[])
+comment6.params=i
+comment6.target=void\ print(int)
+comment7.params=y
+comment7.target=int\ sampleMethod(int)
+comment7.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
+numComments=8

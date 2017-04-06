@@ -4,8 +4,8 @@ package farisaliyafie_6;
 /**
  * Write a description of interface Rank here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Faris Ali Yafie) 
+ * @version (case study modul 6)
  */
 public interface Rank
 {
