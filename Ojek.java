@@ -27,11 +27,11 @@ public class Ojek
      * @param   posisi_sekarang lokasi pengemudi sekarang
      * @return  none            nothing
      */
-    public Ojek(int id, String nama, Lokasi posisi_sekarang, String no_plat){
+    public Ojek(int id, String nama, Lokasi posisi_sekarang/*, String no_plat*/){
         this.id=id;
         this.nama=nama;
         this.posisi_sekarang=posisi_sekarang;
-        this.no_plat=no_plat;
+        //this.no_plat=no_plat;
     }
 
     /**

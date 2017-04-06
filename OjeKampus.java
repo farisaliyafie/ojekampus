@@ -10,15 +10,17 @@ public class OjeKampus
     public static DatabaseUser database;
     public static DatabasePesanan pes_database;
     public static Lokasi ojek_lokasi, per_yafie_awal, per_yafie_akhir;
-    public static Pelanggan p_herdianto;
-    public static Pesanan pes_herdianto;
-    public static Administrasi administrasi;    
+    public static Pelanggan p_yafie;
+    public static Pesanan pes_yafie;
+    public static Administrasi administrasi;   
+    
     /**
      * Fungsi utama OjeKampus
      * @param   args    Array string yang dapat menjadi argumen, default:null
      * @return  none
      */
     public static void main(String[] args) {
+        /*
         Ojek ojek_farisali = new Ojek(DatabaseUser.getIDPelangganTerakhir()
         , "farisali", new Lokasi("UI", 14, 06, "Depok"), "B124UA");
         Pelanggan p_yafie = new Pelanggan(DatabaseUser.getIDPelangganTerakhir(),
@@ -87,5 +89,86 @@ public class OjeKampus
         System.out.println("Objek ojek :"+ojek_7);
         System.out.println("No Plat :");
         System.out.println("Objek pelanggan :"+pelanggan_7);
+        */
+        Lokasi lokasi1 = new Lokasi(1,3,"UI", "Depok");
+        Ojek ojek1 = new Ojek(1,"faris", lokasi1);
+        DatabaseUser.addOjek(ojek1);
+        Lokasi lokasi2 = new Lokasi(11,13,"UI", "Jakarta");
+        Ojek ojek2 = new Ojek(2,"valda", lokasi2);
+        DatabaseUser.addOjek(ojek2);
+        Lokasi lokasi3 = new Lokasi(21,23,"MUI", "Depok");
+        Ojek ojek3 = new Ojek(3,"eka", lokasi3);
+        DatabaseUser.addOjek(ojek3);
+        Pelanggan pelanggan1 = new Pelanggan(1, "yuda","08765421012");
+        DatabaseUser.addPelanggan(pelanggan1);
+        Pelanggan pelanggan2 = new Pelanggan(2, "sanyoto","08291736455");
+        DatabaseUser.addPelanggan(pelanggan2);
+        Pelanggan pelanggan3 = new Pelanggan(3, "vani","08543212345");
+        DatabaseUser.addPelanggan(pelanggan3);
+        
+        Lokasi lokasi_awal_pesanan1 = new Lokasi(2,4,"Kukel", "Depok");
+        Lokasi lokasi_akhir_pesanan1 = new Lokasi(12,14,"MOI", "Jakarta");
+        Pesanan pesanan1 = new Pesanan(pelanggan1,TipeLayanan.BeliBarang,lokasi_awal_pesanan1,lokasi_akhir_pesanan1,pelanggan1.getNama());
+        DatabasePesanan.addPesanan(pesanan1);
+        
+        Lokasi lokasi_awal_pesanan2 = new Lokasi(12,14,"MOI", "Jakarta");
+        Lokasi lokasi_akhir_pesanan2 = new Lokasi(22,24,"Taman", "Bekasi");
+        Pesanan pesanan2 = new Pesanan(pelanggan2,TipeLayanan.AntarBarang,lokasi_awal_pesanan2,lokasi_akhir_pesanan2,pelanggan2.getNama(), "sanyoto");
+        DatabasePesanan.addPesanan(pesanan2);
+        
+        Lokasi lokasi_awal_pesanan3 = new Lokasi(22,24,"Taman", "Bekasi");
+        Lokasi lokasi_akhir_pesanan3 = new Lokasi(2,4,"Kukel", "Depok");
+        Pesanan pesanan3 = new Pesanan(pelanggan3,TipeLayanan.AntarOrang,lokasi_awal_pesanan3,lokasi_akhir_pesanan3,pelanggan3.getNama());
+        DatabasePesanan.addPesanan(pesanan3);
+        
+        System.out.println("\n");
+        Administrasi.printAllDatabase();
+        Administrasi.jalankanSistemPenugas();
+        Administrasi.jalankanSistemPenugas();
+        Administrasi.jalankanSistemPenugas();
+        
+        System.out.println("\n");
+        Administrasi.printAllDatabase();
+        
+        System.out.println("\n");
+        Administrasi.pesananDibatalkan(pesanan1.getPelanggan());
+        Administrasi.pesananDibatalkan(pesanan2.getPelayan());
+        pesanan3.getPelayan().setStatus(StatusOjek.Antar);
+        Administrasi.printAllDatabase();
+        
+        System.out.println("\n");
+        Administrasi.pesananSelesai(pesanan3.getPelanggan());
+        DatabasePesanan.hapusPesanan(pesanan3.getPelanggan());
+        Administrasi.printAllDatabase();
+    }
+    public void antarBarang(){
+        
+    }
+    public void antarOrang(){
+        
+    }
+    public void ojekMembatalkan(){
+        
+    }
+    public void ojekMengubahStatus(){
+        
+    }
+    public void pembelianBarang(){
+        
+    }
+    public void penggunaMembatalkan(){
+        
+    }
+    public void penggunaMenghapusPesanan(){
+        
+    }
+    public void penggunaMenyelesaikanPesanan(){
+        
+    }
+    public void registrasiOjek(){
+        
+    }
+    public void registrasiPengguna(){
+        
     }
 }
