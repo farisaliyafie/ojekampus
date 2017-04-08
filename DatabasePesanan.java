@@ -4,17 +4,38 @@ import java.util.ArrayList;
  * Class will be used to describe user's detail
  * 
  * @author (Faris Ali Yafie)
- * @version (4 Maret 2017)
+ * @version (8 April 2017)
  */
 public class DatabasePesanan
 {
    
-    private static ArrayList<Pesanan> list_pesanan=new ArrayList<>(); 
 
+    private static ArrayList<Pesanan>  list_pesanan = new ArrayList<>();
+    
+    public static ArrayList<Pesanan> getDatabase(){
+        return list_pesanan;
+    }
+    
     /**
-     *Penambahan pesanan baru kedalam catatan
-     *@param    pesan   pesanan layanan ojek
-     *@return   boolean untuk bukti berhasil atau tidaknya penambahan
+     * getPesanan. 
+     * Metode yang akan mengembalikan data pesanan yang terakhir dimasukkan ke database ketika dipanggil.
+     * @return Pesanan list_pesanan   data pesanan yang terakhir dimasukkan ke database.
+     */
+    public static Pesanan getPesanan(Pelanggan pengguna)
+    {
+        for(Pesanan pesan : list_pesanan){
+            if(pesan.getPelanggan().equals(pengguna)){
+                 return pesan;
+            }
+        }
+       return null;
+    }
+   
+    /**
+     * addPesanan. 
+     * Metode untuk menambahkan pesanan pada database serta memberi tahu terdapat penambahan pesanan dalam database.
+     * @param Pesanan pesan    data pesanan yang akan ditambahkan dalam database.
+     * @return true   menandakan penambahan pesanan berhasil dilakukan.
      */
     public static boolean addPesanan(Pesanan pesan)
     {
@@ -27,32 +48,12 @@ public class DatabasePesanan
         System.out.println("Pesanan gagal");
         return false;
     }
-    
-    public static ArrayList<Pesanan> getDatabase()
-    {
-        return list_pesanan;
-    }
-    
+   
     /**
-     *Getter pesanan melalui catatan
-     *@param    none            nothing
-     *@return   list_pesanan    menyimpanan data dari seluruh instansi
-     *                          pesanan yang ditambahkan
-     */
-    public static Pesanan getPesanan(Pelanggan pengguna)
-    {
-       for(Pesanan pesan : list_pesanan){
-            if(pesan.getPelanggan().equals(pengguna)){
-                 return pesan;
-            }
-       }
-       return null;
-    }
-    
-    /**
-     *Penghapusan pesanan dari dalam catatan
-     *@param    pesan   pesanan layanan ojek
-     *@return   boolean untuk bukti berhasil atau tidaknya penghapusan
+     * hapusPesanan. 
+     * Metode untuk menghapus pesanan dari database serta memberi tahu terdapat penghapusan pesanan dalam database.
+     * @param Pesanan pesan    data pesanan yang akan dihapus dalam database.
+     * @return true   menandakan penghapusan pesanan berhasil dilakukan.
      */
     public static boolean hapusPesanan(Pesanan pesan)
     {
@@ -62,7 +63,7 @@ public class DatabasePesanan
         list_pesanan.remove(pesan);
         return true;
     }
-    
+   
     public static boolean hapusPesanan(Pelanggan pengguna)
     {
         Pesanan pesan = getPesanan(pengguna);
