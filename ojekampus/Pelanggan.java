@@ -7,132 +7,33 @@ import java.util.GregorianCalendar;
  * Class will be used to describe user's detail
  * 
  * @author (Faris Ali Yafie)
- * @version (4 Maret 2017)
+ * @version (8 April 2017)
  */
-public class Pelanggan
+public class Pelanggan extends User
 {
-    private int id;
-    private String nama, telefon, email;
-    private Date dob;
-
     /**
-     *Konstruktor kelas Pelanggan
-     *@param    id      nomor identitas pelanggan
-     *@param    nama    nama pelanggan
-     *@return   retun   nothing
+     * Constructor Pelanggan. 
+     * Metode yang pertama kali dipanggil ketika sebuah object dari kelas pelanggan diciptakan.
+     * @param int id    id pelanggan untuk object pelanggan baru.
+     * @param String nama   nama pelanggan untuk object pelanggan baru.
      */
-    public Pelanggan(int id, String nama, String telefon)
+    public Pelanggan(int id, String nama, String telefon) 
     {
-        this.id=id;
-        this.nama=nama;
-        this.setTelefon(telefon);
+        // initialise instance variables
+        super(id,nama);
+        setTelefon(telefon);
     }
-
-    /**
-     *Getter indentitas pelanggan ojek
-     *@param    none    nothing
-     *@retun    id      mengembalikan nilai no identitas
-     */
-    public int getID()
-    {
-        return id;
-    }
-
-    /**
-     *Getter dob
-     *@param    none    nothing
-     *@retun    dob      mengembalikan nilai dob
-     */
-    public Date getDOB(){
-        return dob;
-    }   
     
     /**
-     *Getter nama pelanggan ojek
-     *@param    none    nothing
-     *@retun    nama      mengembalikan nama ojek
-     */
-    public String getNama(){
-        return nama;
-    }
-
-    /**
-     *Setter no telefon pelanggan ojek
-     *@param    id      nilai telefon yang di set
-     *@retun    none    nothing
-     */
-    public boolean setTelefon(String telefon)
-    {
-       this.telefon = telefon; 
-       String telefonPattern="^[0-9]{10,13}$"; //10-13 digit angka
-       Pattern pattern = Pattern.compile(telefonPattern);
-       Matcher regexMatcher = pattern.matcher(telefon);
-       return regexMatcher.find();
-    }    
-
-    /**
-     *Setter email pelanggan ojek
-     *@param    email      nilai email yang di set
-     *@retun    none    nothing
-     */
-    public boolean setEmail (String email){
-        Pattern pattern=Pattern.compile("[a-zA-Z]+[@]+[a-z]+.[a-z]+");
-        Matcher matcher=pattern.matcher(email);
-        this.email=email;
-        if(matcher.matches()){
-            return true;
+     * printData. 
+     * Metode untuk mencetak data pelanggan.
+     */    
+    public String toString(){
+        if(DatabasePesanan.getPesanan(this) == null){
+            return "Pelanggan" + " Nama : "+ nama + " Id : "+ id + "No.Tlp : " + telefon + "||";
         }
-        else{
-            return false;
-        }
-    }      
-
-    /**
-     *Setter no telefon pelanggan ojek
-     *@param    id      nilai telefon yang di set
-     *@retun    none    nothing
-     */
-    public void setDOB (int day, int month, int year){
-       this.dob=dob;
-       this.dob = new GregorianCalendar(year, month-1, day).getTime(); 
-    }     
+        Pesanan temp = DatabasePesanan.getPesanan(this);
+        return "Pelanggan" + " Nama : "+ nama + " Id : "+ id + "No.Tlp : " + telefon + " Pelanggan Awal :" + temp.getPenggunaAwal() + "||";
+    } 
     
-    /**
-     *Setter indentitas pelanggan ojek
-     *@param    id      nilai id yang di set
-     *@retun    none    nothing
-     */
-    public void setID(int id)
-    {
-        this.id=id;
-    }
-    
-    /**
-     *Setter nama pelanggan ojek
-     *@param    nama    nama pengemudi yang di set
-     *@retun    none    nothing
-     */
-    public void setNama(String nama)
-    {
-        this.nama=nama;
-    }
-    
-    /**
-     *Print informasi identitas dan nama pelanggan
-     */
-    /*
-    public void printData()
-    {
-        System.out.println("ID Pelanggan : " + this.id);
-        System.out.println("Nama : " + this.nama);
-    }
-    
-   /**
-    * Method untuk mencetak ID dan Nama Pelanggan.
-    */
-   public String toString ()
-   {
-         return "Pelanggan bernama " +nama + " dan ID " +id + " dengan nomor telfon " +telefon + " pelanggan " + " mengirim pesan";
-        
-   }
 }

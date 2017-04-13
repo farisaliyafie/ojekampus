@@ -2,7 +2,7 @@
  * Class will be used to describe user's detail
  * 
  * @author (Faris Ali Yafie)
- * @version (4 Maret 2017)
+ * @version (8 April 2017)
  */
 public class OjeKampus
 {
@@ -99,6 +99,7 @@ public class OjeKampus
         Lokasi lokasi3 = new Lokasi(21,23,"MUI", "Depok");
         Ojek ojek3 = new Ojek(3,"eka", lokasi3);
         DatabaseUser.addOjek(ojek3);
+        
         Pelanggan pelanggan1 = new Pelanggan(1, "yuda","08765421012");
         DatabaseUser.addPelanggan(pelanggan1);
         Pelanggan pelanggan2 = new Pelanggan(2, "sanyoto","08291736455");
