@@ -3,7 +3,7 @@
  * Enumeration class TipeLayanan - write a description of the enum class here
  * 
  * @author (Faris Ali Yafie)
- * @version (16 Maret 2017)
+ * @version (8 April 2017)
  */
 public enum TipeLayanan
 {
@@ -13,10 +13,18 @@ public enum TipeLayanan
     
     private String deskripsi;
     
-    TipeLayanan(String deskripsi){
-        this.deskripsi=deskripsi;
+    /**
+     * Method untuk mendapatkan TipeLayanan
+     * @param deskripsi untuk deskripsi dari enum yang dibuat
+     */
+    TipeLayanan(String deskripsi)
+    {
+        this.deskripsi = deskripsi;
     }
-    
+
+    /**
+     * Method untuk menampilkan deskripsi yang sudah dibuat
+     */
     public String toString(){
         return this.deskripsi;
     }

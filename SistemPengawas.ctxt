@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ start()
+comment1.params=
+comment1.target=void\ run()
+comment2.params=
+comment2.target=void\ join()
+comment3.params=
+comment3.target=void\ exit()
+comment4.params=ThreadName\ waktu_cek
+comment4.target=SistemPengawas(java.lang.String,\ int)
+comment4.text=\r\n\ Constructor\ for\ objects\ of\ class\ SistemPengawas\r\n
+comment5.params=y
+comment5.target=int\ sampleMethod(int)
+comment5.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\ \r\n\ @param\ \ y\ \ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ \ the\ sum\ of\ x\ and\ y\ \r\n
+numComments=6

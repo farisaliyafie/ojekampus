@@ -12,7 +12,22 @@ public class OjeKampus
     public static Lokasi ojek_lokasi, per_yafie_awal, per_yafie_akhir;
     public static Pelanggan p_yafie;
     public static Pesanan pes_yafie;
-    public static Administrasi administrasi;   
+    public static Administrasi administrasi;
+    
+    public static SistemPengawas sistem;
+    
+    public static void StartSistemPengawas(int waktu_cek){
+        SistemPengawas cek = new SistemPengawas("Thread1", waktu_cek);
+        cek.start();
+    }
+    
+    public static void MenungguSistem(int a){
+        try{
+            Thread.sleep(a);
+        }catch(InterruptedException error1){
+            System.out.println("Sistem tidak dapat menunggu !");
+        }
+    }
     
     /**
      * Fungsi utama OjeKampus
@@ -20,6 +35,7 @@ public class OjeKampus
      * @return  none
      */
     public static void main(String[] args) {
+        
         /*
         Ojek ojek_farisali = new Ojek(DatabaseUser.getIDPelangganTerakhir()
         , "farisali", new Lokasi("UI", 14, 06, "Depok"), "B124UA");
@@ -110,23 +126,43 @@ public class OjeKampus
         Lokasi lokasi_awal_pesanan1 = new Lokasi(2,4,"Kukel", "Depok");
         Lokasi lokasi_akhir_pesanan1 = new Lokasi(12,14,"MOI", "Jakarta");
         Pesanan pesanan1 = new Pesanan(pelanggan1,TipeLayanan.BeliBarang,lokasi_awal_pesanan1,lokasi_akhir_pesanan1,pelanggan1.getNama());
-        DatabasePesanan.addPesanan(pesanan1);
+        try{
+            DatabasePesanan.addPesanan(pesanan1);
+            //DatabasePesanan.addPesanan(pesanan1);
+        }catch(PesananSudahAdaException error1){
+            System.out.print(error1.getMessage());
+        }
         
         Lokasi lokasi_awal_pesanan2 = new Lokasi(12,14,"MOI", "Jakarta");
         Lokasi lokasi_akhir_pesanan2 = new Lokasi(22,24,"Taman", "Bekasi");
         Pesanan pesanan2 = new Pesanan(pelanggan2,TipeLayanan.AntarBarang,lokasi_awal_pesanan2,lokasi_akhir_pesanan2,pelanggan2.getNama(), "sanyoto");
-        DatabasePesanan.addPesanan(pesanan2);
+        try{
+            DatabasePesanan.addPesanan(pesanan2);
+        }catch(PesananSudahAdaException error2){
+            System.out.print(error2.getMessage());
+        }
         
         Lokasi lokasi_awal_pesanan3 = new Lokasi(22,24,"Taman", "Bekasi");
         Lokasi lokasi_akhir_pesanan3 = new Lokasi(2,4,"Kukel", "Depok");
         Pesanan pesanan3 = new Pesanan(pelanggan3,TipeLayanan.AntarOrang,lokasi_awal_pesanan3,lokasi_akhir_pesanan3,pelanggan3.getNama());
-        DatabasePesanan.addPesanan(pesanan3);
+        try{
+            DatabasePesanan.addPesanan(pesanan3);
+            //DatabasePesanan.addPesanan(pesanan3);
+        }catch(PesananSudahAdaException error3){
+            System.out.print(error3.getMessage());
+        }
+        
+        StartSistemPengawas(100);
         
         System.out.println("\n");
         Administrasi.printAllDatabase();
-        Administrasi.jalankanSistemPenugas();
-        Administrasi.jalankanSistemPenugas();
-        Administrasi.jalankanSistemPenugas();
+        //Administrasi.jalankanSistemPenugas();
+        //Administrasi.jalankanSistemPenugas();
+        //Administrasi.jalankanSistemPenugas();
+        //jadikan satu dengan threading
+        MenungguSistem(100);
+        MenungguSistem(100);
+        MenungguSistem(100);
         
         System.out.println("\n");
         Administrasi.printAllDatabase();
@@ -139,37 +175,44 @@ public class OjeKampus
         
         System.out.println("\n");
         Administrasi.pesananSelesai(pesanan3.getPelanggan());
-        DatabasePesanan.hapusPesanan(pesanan3.getPelanggan());
+        try{
+            DatabasePesanan.hapusPesanan(pesanan3.getPelanggan());
+            //DatabasePesanan.hapusPesanan(pesanan3.getPelanggan());
+        }catch(PesananOlehPelangganDitemukanException error4){
+            System.out.print(error4.getMessage());
+        }
         Administrasi.printAllDatabase();
-    }
-    public void antarBarang(){
+        
         
     }
-    public void antarOrang(){
+    public static void antarBarang(){
         
     }
-    public void ojekMembatalkan(){
+    public static void antarOrang(){
         
     }
-    public void ojekMengubahStatus(){
+    public static void ojekMembatalkan(){
         
     }
-    public void pembelianBarang(){
+    public static void ojekMengubahStatus(){
         
     }
-    public void penggunaMembatalkan(){
+    public static void pembelianBarang(){
         
     }
-    public void penggunaMenghapusPesanan(){
+    public static void penggunaMembatalkan(){
         
     }
-    public void penggunaMenyelesaikanPesanan(){
+    public static void penggunaMenghapusPesanan(){
         
     }
-    public void registrasiOjek(){
+    public static void penggunaMenyelesaikanPesanan(){
         
     }
-    public void registrasiPengguna(){
+    public static void registrasiOjek(){
+        
+    }
+    public static void registrasiPengguna(){
         
     }
 }
