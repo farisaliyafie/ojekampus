@@ -25,7 +25,7 @@ public class OjeKampus
         try{
             Thread.sleep(a);
         }catch(InterruptedException error1){
-            System.out.println("Sistem tidak dapat menunggu !");
+            System.out.println("Sistem tidak dapat menunggu!");
         }
     }
     

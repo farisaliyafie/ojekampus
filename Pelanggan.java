@@ -24,6 +24,15 @@ public class Pelanggan extends User
         setTelefon(telefon);
     }
     
+    public Pelanggan(int id, String nama, String email, String telefon, Date dob) 
+    {
+        // initialise instance variables
+        super(id,nama);
+        setEmail(email);
+        setTelefon(telefon);
+        setDOB(dob);
+    }
+    
     /**
      * printData. 
      * Metode untuk mencetak data pelanggan.
