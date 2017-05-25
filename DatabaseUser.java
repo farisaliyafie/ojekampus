@@ -10,10 +10,23 @@ import java.util.ArrayList;
 public class DatabaseUser
 {
     // instance variables - replace the example below with your own
-    private static ArrayList<User>  user_database = new ArrayList<User>();
-    private static int id_ojek_terakhir = 1;
-    private static int id_pelanggan_terakhir = 1;
+    private static ArrayList<User> user_database = new ArrayList<User>();
+    private static int id_ojek_terakhir=1;
+    private static int id_pelanggan_terakhir=1;
+
+    /**
+     * Constructor yang telah dibuat saat kelas DatabaseUser dibuat.
+     */
+    public DatabaseUser()
+    {
+        //Belum ada isi yang dibutuhkan
+    }
     
+    /**
+     * Method untuk mendapatkan database dari ojek pada arraylist
+     * @return mengembalikan nilai dari ojek_database untuk dimasukkan dalam
+     * database
+     */
     public static ArrayList<Ojek> getOjekDatabase(){
         ArrayList<Ojek>  ojek_database = new ArrayList<Ojek>();
        
@@ -25,6 +38,11 @@ public class DatabaseUser
         return ojek_database;
     }
     
+    /**
+     * Method untuk mendapatkan database dari pelanggan pada arraylist
+     * @return mengembalikan nilai dari pelanggan_database untuk dimasukkan dalam
+     * database
+     */
     public static ArrayList<Pelanggan> getPelangganDatabase(){
         ArrayList<Pelanggan>  pelanggan_database = new ArrayList<Pelanggan>();
         for(User user_temp : user_database){
@@ -36,33 +54,31 @@ public class DatabaseUser
     }
     
     /**
-     * addPelanggan. 
-     * Metode untuk menambahkan pelanggan pada database serta memberi tahu terdapat penambahan pelanggan dalam database.
-     * @param Pelanggan baru    data pelanggan yang akan ditambahkan dalam database.
-     * @return true   menandakan penambahan pelanggan berhasil dilakukan.
+     * Method untuk Menambahkan pelanggan baru
+     * @param baru untuk menambahkan pelanggan baru
+     * @return true = nilai benar jika ada pelanggan baru
      */
     public static boolean addPelanggan(Pelanggan baru)
     {
         for(User user_temp : user_database){
             if(user_temp.getID() == baru.getID()){
                 if(user_temp instanceof Pelanggan){
-                    System.out.println("Penambahan pelanggan dalam database gagal");
+                    System.out.println("Penambahan pelanggan gagal");
                     return false;
                 }
             }
         }
         user_database.add(baru);
         id_pelanggan_terakhir++;
-        System.out.println("Penambahan pelanggan dalam database berhasil dilakukan");
+        System.out.println("Penambahan pelanggan berhasil");
         return true;
     }
-   
+    
     /**
-     * removePelanggan. 
-     * Metode untuk menghapus pelanggan pada database.
-     * @param int id    id pelanggan yang akan dihapus dari database.
-     * @return true   menandakan penghapusan pelanggan berhasil dilakukan.
-     */    
+     * Method untuk Menghapus pelanggan
+     * @param id untuk menghapus id pelanggan
+     * @return true = nilai benar jika id pelanggan null (tidak ada)
+     */
     public static boolean removePelanggan(int id)
     {
         for(User user_temp : user_database){
@@ -74,39 +90,35 @@ public class DatabaseUser
                 }
             }
         }
-        System.out.println("ID Pelanggan tidak terdaftar, tidak terjadi penghapusan");
+        System.out.println("ID tidak terdaftar, penghapusan gagal");
         return false;
-        
-        
     }
-   
+    
     /**
-     * addOjek. 
-     * Metode untuk menambahkan ojek pada database serta memberi tahu terdapat penambahan ojek dalam database.
-     * @param Ojek baru    data ojek yang akan ditambahkan dalam database.
-     * @return true   menandakan penambahan ojek berhasil dilakukan.
+     * Method untuk Menambahkan ojek baru
+     * @param baru untuk menambahkan ojek baru
+     * @return true = nilai benar jika ada ojek baru
      */
     public static boolean addOjek(Ojek baru)
     {
         for(User user_temp : user_database){
             if(user_temp.getID() == baru.getID()){
                 if(user_temp instanceof Ojek){
-                    System.out.println("Penambahan ojek dalam database gagal");
+                    System.out.println("Penambahan ojek gagal");
                     return false;
                 }
             }
         }
         user_database.add(baru);
         id_ojek_terakhir++;
-        System.out.println("Penambahan ojek dalam database berhasil dilakukan");
+        System.out.println("Penambahan ojek berhasil");
         return true;
     }
     
     /**
-     * removeOjek. 
-     * Metode untuk menghapus ojek pada database serta memberi tahu terdapat penambahan pelanggan dalam database.
-     * @param int id    id ojek yang akan dihapus dari database.
-     * @return true   menandakan penambahan berhasil dilakukan.
+     * Method untuk Menghapus ojek
+     * @param id untuk menghapus id ojek
+     * @return true = nilai benar jika id ojek null (tidak ada)
      */
     public static boolean removeOjek(int id)
     {
@@ -119,34 +131,31 @@ public class DatabaseUser
                 }
             }
         }
-        System.out.println("ID Ojek tidak terdaftar, tidak terjadi penghapusan");
+        System.out.println("ID Ojek tidak terdaftar, penghapusan gagal");
         return false;
     }
-   
+    
     /**
-     * getIDOjekTerakhir. 
-     * Metode yang akan mengembalikan nilai id ojek yang terakhir dimasukkan ke database ketika dipanggil.
-     * @return int id_ojek_terakhir   nilai id ojek yang terakhir dimasukkan ke database.
+     * Method untuk Mendapatkan ID ojek terakhir
+     * @return id_ojek_terakhir = nilai id ojek terakhir
      */
     public static int getIDOjekTerakhir()
     {
         return id_ojek_terakhir;
     }
-   
+    
     /**
-     * getIDPelangganTerakhir. 
-     * Metode yang akan mengembalikan nilai id pelanggan yang terakhir dimasukkan ke database ketika dipanggil.
-     * @return int id_ojek_terakhir   nilai id pelanggan yang terakhir dimasukkan ke database.
+     * Method untuk Mendapatkan ID pelanggan terakhir
+     * @return id_pelanggan_terakhir = nilai id pelanggan terakhir
      */
     public static int getIDPelangganTerakhir()
     {
         return id_pelanggan_terakhir;
     }
-   
+    
     /**
-     * getUserOjek. 
-     * Metode yang akan mengembalikan data ojek yang terakhir dimasukkan ke database ketika dipanggil.
-     * @return Ojek ojek_database   data ojek yang terakhir dimasukkan ke database.
+     * Method untuk Mendapatkan id ojek
+     * @return ojek_database = nilai id ojek
      */
     public static Ojek getUserOjek(int id)
     {
@@ -159,11 +168,10 @@ public class DatabaseUser
         }
         return null;
     }
-   
+    
     /**
-     * getUserPelanggan. 
-     * Metode yang akan mengembalikan data pelanggan yang terakhir dimasukkan ke database ketika dipanggil.
-     * @return Pelanggan pelanggan_database   data pelanggan yang terakhir dimasukkan ke database.
+     * Method untuk Mendapatkan id pelanggan
+     * @return ojek_pelanggan = nilai id pelanggan
      */
     public static Pelanggan getUserPelanggan(int id)
     {
@@ -176,5 +184,4 @@ public class DatabaseUser
         }
         return null;
     }
-    
 }

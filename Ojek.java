@@ -13,115 +13,126 @@ public class Ojek extends User
 {
     // instance variables - replace the example below with your own
     private StatusOjek status = StatusOjek.Idle;
-    private Lokasi posisiSekarang;
-    private Pesanan pesanan_sekarang=null;
+    private Lokasi posisi_sekarang;
+    private Pesanan pesanan_sekarang = null;
     private String no_plat;
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     public static final Pattern VALID_PHONE_NUM_ID = Pattern.compile("^08[0-9]{9,}$");
     public static final Pattern VALID_PLAT_NUM_ID = Pattern.compile("^[A-Z]{1,3}+[0-9]{1,4}+[A-Z]{1,4}$",  Pattern.CASE_INSENSITIVE);
+ 
     /**
-     * Constructor Ojek. 
-     * Metode yang pertama kali dipanggil ketika sebuah object dari kelas ojek diciptakan.
-     * @param int id    id untuk object ojek baru.
-     * @param String nama   nama untuk object ojek baru.
-     * @param Lokasi posisiSekarang     posisi dari object ojek baru.
+     * Constructor yang telah dibuat saat kelas Ojek dibuat berisi id, nama, lokasi.
+     * @param id untuk id ojek
+     * @param nama untuk nama ojek
+     * @param posisi_sekarang untuk lokasi ojek
      */
-    public Ojek(int id, String nama, Lokasi posisiSekarang)
+    public Ojek(int id, String nama, Lokasi posisi_sekarang)
     {
         // initialise instance variables
-        super(id,nama);
-        this.posisiSekarang = posisiSekarang;
+        super.id=id;
+        super.nama=nama;
+        this.posisi_sekarang = posisi_sekarang;
     }
     
+    public Ojek(int id, String nama, String telefon, String email, Date date, String no_plat, Lokasi posisiSekarang)
+    {
+        super.id = id;
+        super.nama = nama;
+        super.telefon = telefon;
+        super.email = email;
+        super.dob = date;
+        this.no_plat = no_plat;
+        this.posisi_sekarang = posisi_sekarang;
+    }
+
     /**
-     * printData. 
-     * Metode untuk mencetak data ojek.
-     */ 
+     * Method untuk menampilkan data pada kelas Ojek
+     */
     public String toString(){
-       if(pesanan_sekarang == null){
-        return "Ojek" + " Id : "+id + " Nama : "+  nama + " Status :" + status.getIDStatus()+ "||";
-       }
-        Pelanggan temp = pesanan_sekarang.getPelanggan();
-        return "Ojek" + " Id : "+id + " Nama : "+  nama + " Status :" + status.getIDStatus() + " Pelanggan" + temp.getNama()+ "||";
+    if(pesanan_sekarang == null)
+    {
+        return "\nOjek" + " Id: "+id + " Nama: "+ nama + " Status:" + status.toString();
     }
-    
-    public void setNoPlat(String no_plat){
-        if(plat_validate(no_plat)){
+    else
+    {
+        Pelanggan temp = pesanan_sekarang.getPelanggan();
+        return "\nOjek" + " Id: "+id + " Nama: "+ nama + " Status:" + status.toString() + " Pelanggan:" + temp.getNama();
+    }
+    }
+   
+    /**
+     * Method untuk Men-set no plat ojek
+     * @param no plat untuk no plat ojek baru
+     * @return true mengembalikan nilai betul jika sesuai dengan pattern
+     * @return true mengembalikan salah betul jika tidak sesuai dengan pattern
+     */
+    public boolean setNoPlat(String no_plat)
+    {
+        Pattern pattern = Pattern.compile("[A-Z]\\d{1,4}[A-Z]{1,3}");
+        Matcher matcher = pattern.matcher(no_plat);
+        if(matcher.matches())
+        {
             this.no_plat = no_plat;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
     
     /**
-     * setPesanan. 
-     * Metode untuk merubah pesanan yang sedang diambil ojek.
-     * @param Pesanan pesan   Pesanan baru ojek.
+     * Method untuk Men-set pesan ojek
+     * @param pesan untuk pesan ojek baru
      */
-    public void setPesanan(Pesanan pesan){
+    public void setPesanan(Pesanan pesan)
+    {
         pesanan_sekarang = pesan;
     }
     
     /**
-     * setPosisi. 
-     * Metode untuk merubah posisi ojek.
-     * @param Lokasi sekarang   Posisi baru ojek.
+     * Method untuk Men-set lokasi ojek sekarang
+     * @param sekarang untuk lokasi ojek baru
      */
-    public void setPosisi(Lokasi sekarang){
-        posisiSekarang = sekarang;
+    public void setPosisi(Lokasi sekarang)
+    {
+        posisi_sekarang = sekarang;
     }
     
     /**
-     * setStatus. 
-     * Metode untuk merubah status ojek.
-     * @param String status   status baru ojek.
+     * Method untuk Men-set status ojek
+     * @param status untuk status ojek baru
      */
-    public void setStatus(StatusOjek status){
-        this.status = status;
-    }
-    
-    public String getNoPlat(){
-        return no_plat;
+    public void setStatus(StatusOjek status)
+    {
+        this.status=status;
     }
     
     /**
-     * getPesanan. 
-     * Metode yang akan mengembalikan pesanan yang diambil ojek ketika dipanggil.
-     * @return Pesanan pesanan_sekarang   pesanan yang diambil ojek.
-     */  
-    public Pesanan getPesanan(){
+     * Method untuk Mendapatkan pesanan ojek
+     * @return pesan = nilai pesanan ojek
+     */
+    public Pesanan getPesanan()
+    {
         return pesanan_sekarang;
     }
     
     /**
-     * getPosisi. 
-     * Metode yang akan mengembalikan posisi ojek ketika dipanggil.
-     * @return Lokasi posisiSekarang   posisi ojek sekarang.
-     */ 
-    public Lokasi getPosisi(){
-        return posisiSekarang;
+     * Method untuk Mendapatkan posisi ojek sekarang
+     * @return posisi_sekarang = nilai posisi ojek sekarang
+     */
+    public Lokasi getPosisi()
+    {
+        return posisi_sekarang;
     }
     
     /**
-     * getStatus. 
-     * Metode yang akan mengembalikan status ojek ketika dipanggil.
-     * @return String statusa   status ojek.
-     */ 
-    public StatusOjek getStatus(){
+     * Method untuk Mendapatkan status ojek
+     * @return status = nilai status ojek
+     */
+    public StatusOjek getStatus()
+    {
         return status;
-    }
-    
-    public static boolean validate(String emailStr) {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
-        return matcher.find();
-    }
-    
-    public static boolean tlp_validate(String telefon) {
-        Matcher matcher = VALID_PHONE_NUM_ID.matcher(telefon);
-        return matcher.find();
-    }
-    
-    public static boolean plat_validate(String plat) {
-        Matcher matcher = VALID_PLAT_NUM_ID.matcher(plat);
-        return matcher.find();
     }
     
 }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Administrasi
 {
     // instance variables - replace the example below with your own
-    /**
+   /**
      * Method untuk menampilkan data ojek database
      */
     public static void printOjekDatabase(){
@@ -200,8 +200,11 @@ public class Administrasi
      */
     public static void jalankanSistemPenugas(){
         Pesanan pesanan_idle = cariPesananIdle();
-        Ojek ojek_terdekat = temukanOjekTerdekat(pesanan_idle);
-        pesananDitugaskan(pesanan_idle,ojek_terdekat);
+        if(pesanan_idle != null){
+            Ojek ojek_terdekat = temukanOjekTerdekat(pesanan_idle);
+            if(ojek_terdekat !=null){
+                pesananDitugaskan(pesanan_idle,ojek_terdekat);
+            }
+        }
     }
-    
 }

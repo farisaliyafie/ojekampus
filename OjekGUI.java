@@ -1,103 +1,132 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import javax.swing.UIManager.LookAndFeelInfo;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+import javax.swing.border.Border;
+import javax.swing.*;
 
 /**
  *
  * @author Faris AY
  */
-public class OjekGUI extends javax.swing.JFrame {
+public class OjekGUI extends JFrame {
 
-    /**
-     * Creates new form OjekGUI
-     */
-    public OjekGUI() {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OjekGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OjekGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OjekGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OjekGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+ private JMenuBar menuBar;
+ private JButton button1;
+ private JButton button2;
+ private JLabel label1;
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+ //Constructor 
+ public OjekGUI(){
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Ojek");
+  this.setTitle("OjekGUI");
+  this.setSize(400,300);
+  //menu generate method
+  generateMenu();
+  this.setJMenuBar(menuBar);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton1.setText("Registrasi");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new RegistrasiOjekGUI();
-            }
-        });
+  //pane with null layout
+  JPanel contentPane = new JPanel(null);
+  contentPane.setPreferredSize(new Dimension(400,300));
+  contentPane.setBackground(new Color(204,204,0));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton2.setText("Log-In");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new OjekLoginGUI();
-            }
-        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+  button1 = new JButton();
+  button1.setBounds(134,115,125,30);
+  button1.setBackground(new Color(214,217,223));
+  button1.setForeground(new Color(0,0,0));
+  button1.setEnabled(true);
+  button1.setFont(new Font("SansSerif",0,16));
+  button1.setText("Registrasi");
+  button1.setVisible(true);
+  button1.addMouseListener(new MouseAdapter() 
+	{
+		public void mouseClicked(MouseEvent klik) 
+		{
+			new RegistOjekGUI();
+		}
+	});
 
-        pack();
-        
-        setTitle("Ojek GUI");
-        this.setVisible(true);
-    }
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-    }  
+  button2 = new JButton();
+  button2.setBounds(134,155,125,30);
+  button2.setBackground(new Color(214,217,223));
+  button2.setForeground(new Color(0,0,0));
+  button2.setEnabled(true);
+  button2.setFont(new Font("SansSerif",0,16));
+  button2.setText("Log-in");
+  button2.setVisible(true);
+  button2.addMouseListener(new MouseAdapter() 
+	{
+		public void mouseClicked(MouseEvent klik) 
+		{
+			new OjekLoginGUI();
+		}
+	});
 
-    // Variables declaration - do not modify                     
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    // End of variables declaration                   
+  label1 = new JLabel();
+  label1.setBounds(165,55,112,35);
+  label1.setBackground(new Color(214,217,223));
+  label1.setForeground(new Color(0,0,0));
+  label1.setEnabled(true);
+  label1.setFont(new Font("SansSerif",0,24));
+  label1.setText("Ojek");
+  label1.setVisible(true);
+
+  //adding components to contentPane panel
+  contentPane.add(button1);
+  contentPane.add(button2);
+  contentPane.add(label1);
+
+  //adding panel to JFrame and seting of window position and close operation
+  this.add(contentPane);
+  this.setLocationRelativeTo(null);
+  this.pack();
+  this.setVisible(true);
+  this.setResizable(false);
+ }
+
+ //method for generate menu
+ public void generateMenu(){
+  menuBar = new JMenuBar();
+
+  JMenu file = new JMenu("File");
+  JMenu tools = new JMenu("Tools");
+  JMenu help = new JMenu("Help");
+
+  JMenuItem open = new JMenuItem("Open   ");
+  JMenuItem save = new JMenuItem("Save   ");
+  JMenuItem exit = new JMenuItem("Exit   ");
+  JMenuItem preferences = new JMenuItem("Preferences   ");
+  JMenuItem about = new JMenuItem("About   ");
+
+
+  file.add(open);
+  file.add(save);
+  file.addSeparator();
+  file.add(exit);
+  tools.add(preferences);
+  help.add(about);
+
+  menuBar.add(file);
+  menuBar.add(tools);
+  menuBar.add(help);
+ }
+
+
+
+  public static void main(String[] args){
+  System.setProperty("swing.defaultlaf", "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+  javax.swing.SwingUtilities.invokeLater(new Runnable() {
+   public void run() {
+    new OjekGUI();
+   }
+  });
+ }
+
 }

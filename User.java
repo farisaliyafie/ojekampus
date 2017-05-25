@@ -15,89 +15,127 @@ public abstract class User
     public static final Pattern VALID_PHONE_NUM_ID = Pattern.compile("^08[0-9]{9,}$");
 
     /**
-     * Constructor for objects of class User
+     * Constructor yang telah dibuat saat kelas User dibuat berisi id, nama.
+     * @param id untuk id ojek
+     * @param nama untuk nama ojek
      */
-    public User(int id, String nama)
+    /*public User(int id, String nama)
     {
-        // initialise instance variables
        this.id = id;
        this.nama = nama;
-    }
-    
+    }*/
+
     /**
-     * getID. 
-     * Metode yang akan mengembalikan nilai id pelanggan ketika dipanggil.
-     * @return int id   nilai id pelanggan.
-     */    
+     * Method untuk Mendapatkan ID ojek
+     * @return id mengembalikan nilai ID ojek
+     */
     public int getID()
     {
         return id;
     }
     
-    public String getTelefon(){
+    /**
+     * Method untuk Mendapatkan no telefon ojek
+     * @return no telefon mengembalikan nilai no telefon ojek
+     */
+    public String getTelefon()
+    {
         return telefon;
     }
     
-    public String getEmail(){
+    /**
+     * Method untuk Mendapatkan email ojek
+     * @return email mengembalikan nilai email ojek
+     */
+    public String getEmail()
+    {
         return email;
     }
     
-    public Date getDOB(){
+    /**
+     * Method untuk Mendapatkan DOB ojek
+     * @return DOB mengembalikan nilai DOB ojek
+     */
+    public Date getDOB()
+    {
         return dob;
     }
     
     /**
-     * getNama. 
-     * Metode yang akan mengembalikan nama pelanggan ketika dipanggil.
-     * @return String nama  nama pelanggan.
+     * Method untuk Mendapatkan nama ojek
+     * @return nama = nilai nama ojek
      */
-    public String getNama(){
+    public String getNama()
+    {
         return nama;
     }
     
     /**
-     * setID. 
-     * Metode untuk merubah nilai id pelanggan.
-     * @param int id   nilai id baru pelanggan.
+     * Method untuk Men-set ID ojek
+     * @param id untuk id ojek baru
      */
-    public void setID(int id){
-        this.id = id;
+    public void setID(int id)
+    {
+        this.id=id;
     }
     
     /**
-     * setNama. 
-     * Metode untuk merubah nama pelanggan.
-     * @param String nama   nama baru pelanggan.
+     * Method untuk Men-set nama ojek
+     * @param nama untuk nama ojek baru
      */
-    public void setNama(String nama){
-        this.nama = nama;
+    public void setNama(String nama)
+    {
+        this.nama=nama;
     }
-  
     
-    public void setDOB(Date dob){
-        this.dob = dob;
+    /**
+     * Method untuk Men-set DOB ojek
+     * @param day,month,year untuk tanggal lahir ojek
+     */
+    public void setDOB(Date dob)
+    {
+        this.dob=dob;
     }
-   
-    public void setTelefon(String telefon){
-        if(tlp_validate(telefon)){
+    
+    /**
+     * Method untuk Men-set no telefon ojek
+     * @param telefon untuk no telefon ojek baru
+     * @return true mengembalikan nilai betul jika sesuai dengan pattern
+     * @return true mengembalikan salah betul jika tidak sesuai dengan pattern
+     */
+    public boolean setTelefon(String telefon)
+    {
+        Pattern pattern = Pattern.compile("^08[0-9]{10,12}$");
+        Matcher matcher = pattern.matcher(telefon);
+        if(matcher.matches())
+        {
             this.telefon = telefon;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
     
-    public void setEmail(String email){
-        if(validate(email)){
-            this.email = email;
+    /**
+     * Method untuk Men-set email ojek
+     * @param email untuk email ojek baru
+     * @return true mengembalikan nilai betul jika sesuai dengan pattern
+     * @return true mengembalikan salah betul jika tidak sesuai dengan pattern
+     */
+    public boolean setEmail(String email)
+    {
+        Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$");
+        Matcher matcher = pattern.matcher(email);
+        this.email=email;
+        if(matcher.matches())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
-
-    public static boolean validate(String emailStr) {
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
-        return matcher.find();
-    }
-
-    public static boolean tlp_validate(String telefon) {
-        Matcher matcher = VALID_PHONE_NUM_ID.matcher(telefon);
-        return matcher.find();
-    }
-    
 }

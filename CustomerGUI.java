@@ -1,147 +1,150 @@
+import javax.swing.UIManager.LookAndFeelInfo;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+import javax.swing.border.Border;
+import javax.swing.*;
 
 /**
  *
  * @author Faris AY
  */
-public class CustomerGUI extends javax.swing.JFrame {
+public class CustomerGUI extends JFrame {
 
-    /**
-     * Creates new form CustomerGUI
-     */
-    public CustomerGUI() {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }        
-        
-        jFrame1 = new javax.swing.JFrame();
-        jFrame2 = new javax.swing.JFrame();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+	private JMenuBar menuBar;
+	private JButton button1;
+	private JButton button2;
+	private JButton button3;
+	private JLabel label1;
 
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+	//Constructor 
+	public CustomerGUI(){
 
-        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
-        jFrame2.getContentPane().setLayout(jFrame2Layout);
-        jFrame2Layout.setHorizontalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame2Layout.setVerticalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+		this.setTitle("CustomerGUI");
+		this.setSize(400,300);
+		//menu generate method
+		generateMenu();
+		this.setJMenuBar(menuBar);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		//pane with null layout
+		JPanel contentPane = new JPanel(null);
+		contentPane.setPreferredSize(new Dimension(400,300));
+		contentPane.setBackground(new Color(204,204,0));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Customer");
 
-        jButton1.setText("Pemesanan");
-        jButton1.setToolTipText("");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new PemesananGUI();
-            }
-        });
+		button1 = new JButton();
+		button1.setBounds(134,115,125,30);
+		button1.setBackground(new Color(214,217,223));
+		button1.setForeground(new Color(0,0,0));
+		button1.setEnabled(true);
+		button1.setFont(new Font("sansserif",0,12));
+		button1.setText("Registrasi");
+		button1.setVisible(true);
+		button1.addMouseListener(new MouseAdapter() 
+		{
+			public void mouseClicked(MouseEvent klik) 
+			{
+				new RegistGUI();
+			}
+		});	
 
-        jButton2.setText("Registrasi");
-        jButton2.setToolTipText("");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new RegistrasiGUI();
-            }
-        });
-        
-        jButton3.setText("Menuggu");
-        jButton3.setToolTipText("");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                new TungguGUI();
-            }
-        });
+		button2 = new JButton();
+		button2.setBounds(134,155,125,30);
+		button2.setBackground(new Color(214,217,223));
+		button2.setForeground(new Color(0,0,0));
+		button2.setEnabled(true);
+		button2.setFont(new Font("sansserif",0,12));
+		button2.setText("Pemesanan");
+		button2.setVisible(true);
+		button2.addMouseListener(new MouseAdapter() 
+		{
+			public void mouseClicked(MouseEvent klik) 
+			{
+				new PemesananGUI();
+			}
+		});
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
-        pack();
-        setTitle("Customer GUI");
-        this.setVisible(true);
-    }                      
+		button3 = new JButton();
+		button3.setBounds(134,195,125,30);
+		button3.setBackground(new Color(214,217,223));
+		button3.setForeground(new Color(0,0,0));
+		button3.setEnabled(true);
+		button3.setFont(new Font("sansserif",0,12));
+		button3.setText("Menunggu");
+		button3.setVisible(true);
+		button3.addMouseListener(new MouseAdapter() 
+		{
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-        new PemesananGUI();
-    }       
-    
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-        new RegistrasiGUI();
-    }    
-    
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-        new TungguGUI();
-    }  
+			public void mouseClicked(MouseEvent klik) 
+			{
+				new TungguGUI();
+			}
+		});
 
-    // Variables declaration - do not modify                     
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JFrame jFrame1;
-    private javax.swing.JFrame jFrame2;
-    private javax.swing.JLabel jLabel1;
-    // End of variables declaration                   
+		label1 = new JLabel();
+		label1.setBounds(155,55,112,35);
+		label1.setBackground(new Color(214,217,223));
+		label1.setForeground(new Color(0,0,0));
+		label1.setEnabled(true);
+		label1.setFont(new Font("SansSerif",0,18));
+		label1.setText("Customer");
+		label1.setVisible(true);
+
+		//adding components to contentPane panel
+		contentPane.add(button1);
+		contentPane.add(button2);
+		contentPane.add(button3);
+		contentPane.add(label1);
+
+		//adding panel to JFrame and seting of window position and close operation
+		this.add(contentPane);
+		this.setLocationRelativeTo(null);
+		this.pack();
+		this.setVisible(true);
+		this.setResizable(false);
+	}
+
+	//method for generate menu
+	public void generateMenu(){
+		menuBar = new JMenuBar();
+
+		JMenu file = new JMenu("File");
+		JMenu tools = new JMenu("Tools");
+		JMenu help = new JMenu("Help");
+
+		JMenuItem open = new JMenuItem("Open   ");
+		JMenuItem save = new JMenuItem("Save   ");
+		JMenuItem exit = new JMenuItem("Exit   ");
+		JMenuItem preferences = new JMenuItem("Preferences   ");
+		JMenuItem about = new JMenuItem("About   ");
+
+
+		file.add(open);
+		file.add(save);
+		file.addSeparator();
+		file.add(exit);
+		tools.add(preferences);
+		help.add(about);
+
+		menuBar.add(file);
+		menuBar.add(tools);
+		menuBar.add(help);
+	}
+
+	 public static void main(String[] args){
+		System.setProperty("swing.defaultlaf", "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				new CustomerGUI();
+			}
+		});
+	}
+
 }

@@ -15,24 +15,13 @@ public class PesananTidakDitemukanException extends Exception
      */
     public PesananTidakDitemukanException(Pesanan pesanan_input)
     {
-        // initialise instance variables
-        super("Pesanan yang dipesan oleh ");
-        this.pesanan_error=pesanan_input;
-    } 
-    
-    public String getMessage(){
-        return super.getMessage()+pesanan_error.getPelanggan().getNama()+"tidak ditemukan";
+        super("Pesanan yang dipesan oleh");
+        pesanan_error = pesanan_input;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
+    public String getMessage()
     {
-        // put your code here
-        return y;
+        return super.getMessage() + pesanan_error.getPelanggan().getNama() 
+        + " tidak ditemukan";
     }
 }

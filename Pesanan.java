@@ -7,7 +7,7 @@
 public class Pesanan
 {
     // instance variables - replace the example below with your own
-    private Ojek pelayan = null;
+    private Ojek pelayan=null;
     private Pelanggan pengguna;
     private String pelanggan_awal;
     private String pelanggan_akhir;
@@ -17,20 +17,21 @@ public class Pesanan
     private Lokasi lokasi_akhir;
     private boolean diproses;
     private boolean selesai;
-    
-    /**
-     * Constructor Pesanan. 
-     * Metode yang pertama kali dipanggil ketika sebuah object dari kelas pesanan diciptakan.
-     * @param Pelanggan pengguna    Pelanggan yang memesan Pesanan.
-     * @param String layanan  nama pelanggan untuk object pelanggan baru.
-     * @param Lokasi lokasi_awal    lokasi awal dari sebuah pesanan. 
-     * @param Lokasi lokasi_akhir   lokasi tujuan dari sebuah pesanan.
-     * @param String pelanggan_awal     nama dari pelanggan yang akaan diantar/memberikan barang untuk diantar.
-     * @param String pelanggan_akhir    nama dari pelanggan yang akaan diantar/diberikan barang yang diantar.
-     * @param double biaya  biaya layanan dari sebuah pesanan.
+
+   /**
+     * Constructor yang telah dibuat saat kelas Pesanan dibuat berisi pelanggan, lokasi, biaya.
+     * @param pengguna untuk nama pengguna yang memesan pesanan
+     * @param layanan untuk jenis layanan
+     * @param lokasi_awal untuk lokasi awal 
+     * @param lokasi_akhir untuk lokasi akhir
+     * @param pelanggan_awal untuk nama pelanggan yang memesan
+     * @param pelanggan_akhir untuk nama pelanggan yang memesan (berbeda bila untuk antar barang)
+     * @param biaya untuk biaya yang dibayar
      */
-    
-    public Pesanan(Pelanggan pengguna, TipeLayanan layanan, Lokasi lokasi_awal, Lokasi lokasi_akhir, String pelanggan_awal, String pelanggan_akhir, double biaya)
+    public Pesanan(Pelanggan pengguna, TipeLayanan layanan, 
+                    Lokasi lokasi_awal, Lokasi lokasi_akhir, 
+                    String pelanggan_awal, String pelanggan_akhir, 
+                    double biaya)
     {
         this.pengguna = pengguna;
         this.layanan = layanan;
@@ -40,9 +41,10 @@ public class Pesanan
         this.pelanggan_akhir = pelanggan_akhir;
         this.biaya = biaya;
     }
-
     
-    public Pesanan(Pelanggan pengguna, TipeLayanan layanan, Lokasi lokasi_awal, Lokasi lokasi_akhir, String pelanggan_awal)
+    public Pesanan(Pelanggan pengguna, TipeLayanan layanan, 
+                    Lokasi lokasi_awal, Lokasi lokasi_akhir, 
+                    String pelanggan_awal)
     {
         this.pengguna = pengguna;
         this.layanan = layanan;
@@ -51,7 +53,9 @@ public class Pesanan
         this.pelanggan_awal = pelanggan_awal;
     }
     
-    public Pesanan(Pelanggan pengguna, TipeLayanan layanan, Lokasi lokasi_awal, Lokasi lokasi_akhir, String pelanggan_awal, String pelanggan_akhir)
+    public Pesanan(Pelanggan pengguna, TipeLayanan layanan, 
+                    Lokasi lokasi_awal, Lokasi lokasi_akhir, 
+                    String pelanggan_awal, String pelanggan_akhir)
     {
         this.pengguna = pengguna;
         this.layanan = layanan;
@@ -60,178 +64,251 @@ public class Pesanan
         this.pelanggan_awal = pelanggan_awal;
         this.pelanggan_akhir = pelanggan_akhir;
     }
-    
-    /**
-     * printData. 
-     * Metode untuk mencetak data pesanan.
-     */   
+
+     /**
+     * Method untuk menampilkan data pada kelas Pesanan
+     */
     public String toString()
     {
         String final_status = "KOSONG";
-        if(diproses == true && selesai == false){
+        if(getStatusDiproses()==true && getStatusSelesai()==false)
+        {
             final_status = "DIPROSES";
         }
-        else if(diproses == false && selesai == false){
+        else if(getStatusDiproses()==false && getStatusSelesai()==false)
+        {
             final_status = "KOSONG";
         }
-        else if(diproses == false && selesai == true){
+        else if(getStatusDiproses()==false && getStatusSelesai()==true)
+        {
             final_status = "SELESAI";
         }
-        else{}
-        if(pelayan == null){
-            if(pelanggan_akhir != null){
-                return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal + " di " + lokasi_awal.getNama() + " ke " +
-                pelanggan_akhir + " di " + lokasi_akhir.getNama() + " dengan layanan " + layanan + " status " + final_status + " || ");
+        
+        if(pelayan==null)
+        {
+            if(pelanggan_akhir != null)
+            {
+                return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal 
+                + " di " + lokasi_awal.getNama() + " ke " + pelanggan_akhir + " di \n" + 
+                lokasi_akhir.getNama() + " dengan layanan " + layanan + " status " 
+                + final_status + "|");
             }
-            return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal + " di " + lokasi_awal.getNama() + " ke "+ 
-            lokasi_akhir.getNama() + " dengan layanan " + layanan + " status " + final_status + " || ");
+            else
+            {
+                return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal 
+                + " di " + lokasi_awal.getNama() + " ke \n" + lokasi_akhir.getNama() + 
+                " dengan layanan " + layanan + " status " 
+                + final_status + "|");
+            }
         }
-        if(pelanggan_akhir != null){
-            return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal + " di " + lokasi_awal.getNama() + " ke " +
-            pelanggan_akhir + " di " + lokasi_akhir.getNama() + " dengan layanan " + layanan 
-            +" status " + final_status + " || Diproses oleh " + pelayan.getNama());
+        else
+        {
+            if(pelanggan_akhir != null)
+            {
+                return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal 
+                + " di " + lokasi_awal.getNama() + " ke \n" + pelanggan_akhir + " di " + 
+                lokasi_akhir.getNama() + " dengan layanan " + layanan + " status " 
+                + final_status + " | Diproses oleh " + pelayan.getNama());
+            }
+            else
+            {
+                return ("Dibuat oleh " + pengguna.getNama() + " untuk " + pelanggan_awal 
+                + " di " + lokasi_awal.getNama() + " ke \n"+ lokasi_akhir.getNama() + 
+                " dengan layanan " + layanan + " status " 
+                + final_status + " | Diproses oleh " + pelayan.getNama());
+            }
         }
-        return ("Dibuat oleh " + pengguna.getNama() + " untuk " +
-        pelanggan_awal + " di " + lokasi_awal.getNama() + " ke "+
-        lokasi_akhir.getNama() + " dengan layanan " + layanan +
-        " status " + final_status + " || Diproses oleh " +
-        pelayan.getNama());
+    }
+    
+    public String getFinalStatus(){
+        String final_status = "KOSONG";
+        if(getStatusDiproses() == true && getStatusSelesai() == false){
+            final_status = "DIPROSES";
+        } else if(getStatusDiproses() == false && getStatusSelesai() == false){
+            final_status = "KOSONG";
+        } else if(getStatusDiproses() == false && getStatusSelesai() == true){
+            final_status = "SELESAI";
+        }
+        return final_status;
     }
     
     /**
-     * getStatusPesanan. 
-     * Metode yang akan mengembalikan status dari pesanan ketika dipanggil.
-     * @return boolean diproses   status dari pesanan.
-     */  
+     * Method untuk Mendapatkan status diproses
+     * @return diproses mengembalikan nilai status diproses
+     */
     public boolean getStatusDiproses()
     {
         return diproses;
     }
     
+    /**
+     * Method untuk Mendapatkan status selesai
+     * @return diproses mengembalikan nilai status selesai
+     */
     public boolean getStatusSelesai()
     {
         return selesai;
     }
     
     /**
-     * getPelanggan. 
-     * Metode yang akan mengembalikan data pelanggan ketika dipanggil.
-     * @return Pelanggan pengguna   data pelanggan yang memesan pesanan.
-     */  
+     * Method untuk Mendapatkan pelanggan
+     * @return pengguna = nilai pengguna
+     */
     public Pelanggan getPelanggan()
     {
         return pengguna;
     }
     
     /**
-     * getOjek. 
-     * Metode yang akan mengembalikan data Ojek yang menjalankan pesanan ketika dipanggil.
-     * @return Ojek pelayan   data Ojek yang menjalankan pesanan.
-     */  
+     * Method untuk Mendapatkan ojek
+     * @return pelayan = nilai pelayan (ojek)
+     */
     public Ojek getPelayan()
     {
         return pelayan;
     }
     
     /**
-     * getLokasiAwal. 
-     * Metode yang akan mengembalikan data lokasi awal dari pesanan ketika dipanggil.
-     * @return Lokasi lokasi_awal   data lokasi awal dari pesanan .
-     */ 
+     * Method untuk Mendapatkan lokasi awal
+     * @return lokasi_awal = nilai lokasi awal
+     */
     public Lokasi getLokasiAwal()
     {
         return lokasi_awal;
     }
     
     /**
-     * getLokasiAkhir. 
-     * Metode yang akan mengembalikan data lokasi akhir dari pesanan ketika dipanggil.
-     * @return Lokasi lokasi_akhir   data lokasi akhir dari pesanan .
-     */ 
+     * Method untuk Mendapatkan lokasi akhir
+     * @return lokasi_akhir = nilai lokasi akhir
+     */
     public Lokasi getLokasiAkhir()
     {
         return lokasi_akhir;
     }
     
     /**
-     * getTipeLayanan. 
-     * Metode yang akan mengembalikan jenis layanan dari pesanan ketika dipanggil.
-     * @return String layanan  jenis layanan dari pesanan .
-     */ 
+     * Method untuk Mendapatkan tipe layanan
+     * @return layanan = nilai tipe layanan
+     */
     public TipeLayanan getTipeLayanan()
     {
         return layanan;
     }
     
     /**
-     * getPenggunaAwal. 
-     * Metode yang akan mengembalikan nama pelanggan awal dari pesanan ketika dipanggil.
-     * @return String pelanggan_awal  nama pelanggan awal dari pesanan .
-     */ 
+     * Method untuk Mendapatkan nama pengguna awal
+     * @return pelanggan_awal = nilai pengguna awal
+     */
     public String getPenggunaAwal()
     {
         return pelanggan_awal;
     }
     
     /**
-     * getPenggunaAkhir. 
-     * Metode yang akan mengembalikan nama pelanggan akhir dari pesanan ketika dipanggil.
-     * @return String pelanggan_awal  nama pelanggan akhir dari pesanan .
-     */ 
+     * Method untuk Mendapatkan nama pengguna akhir
+     * @return pelanggan_akhir = nilai pengguna akhir
+     */
     public String getPenggunaAkhir()
     {
         return pelanggan_akhir;
     }
-    
+  
     /**
-     * getBiaya. 
-     * Metode yang akan mengembalikan jumlah biaya pesanan ketika dipanggil.
-     * @return int biaya   jumlah biaya pesanan.
-     */  
+     * Method untuk Mendapatkan biaya 
+     * @return biaya = nilai biaya
+     */
     public double getBiaya()
     {
         return biaya;
     }
-    
-    public void setPelayan(Ojek pelayan){
+       
+    /**
+     * Method untuk Men-set pelayan (ojek)
+     * @param pelayan untuk pelayan (ojek)
+     */
+    public void setPelayan(Ojek pelayan)
+    {
         this.pelayan = pelayan;
     }
     
-    public void setPelanggan(Pelanggan pengguna){
+    /**
+     * Method untuk Men-set pelanggan
+     * @param pengguna untuk pelanggan
+     */
+    public void setPelanggan(Pelanggan pengguna)
+    {
         this.pengguna = pengguna;
     }
     
-    public void setPenggunaAwal(String pelanggan_awal){
+    /**
+     * Method untuk Men-set pelanggan awal
+     * @param pelanggan_awal untuk pelanggan awal
+     */
+    public void setPenggunaAwal(String pelanggan_awal)
+    {
         this.pelanggan_awal = pelanggan_awal;
     }
     
-    public void setPenggunaAkhir(String pelanggan_akhir){
+    /**
+     * Method untuk Men-set pelanggan akhir
+     * @param pelanggan_akhir untuk pelanggan akhir
+     */
+    public void setPenggunaAkhir(String pelanggan_akhir)
+    {
         this.pelanggan_akhir = pelanggan_akhir;
     }
     
-    public void setBiaya(double biaya){
+    /**
+     * Method untuk Men-set biaya
+     * @param biaya untuk biaya
+     */
+    public void setBiaya(double biaya)
+    {
         this.biaya = biaya;
     }
     
-    public void setTipeLayanan(TipeLayanan layanan){
+    /**
+     * Method untuk Men-set tipe layanan
+     * @param layanan untuk tipe layanan
+     */
+    public void setTipeLayanan(TipeLayanan layanan)
+    {
         this.layanan = layanan;
     }
     
-    public void setLokasiAwal(Lokasi lokasi_awal){
+    /**
+     * Method untuk Men-set lokasi awal
+     * @param lokasi_awal untuk lokasi awal
+     */
+    public void setLokasiAwal(Lokasi lokasi_awal)
+    {
         this.lokasi_awal = lokasi_awal;
     }
     
-    public void setLokasiAkhir(Lokasi lokasi_akhir){
+    /**
+     * Method untuk Men-set lokasi akhir
+     * @param lokasi_akhir untuk lokasi akhir
+     */
+    public void setLokasiAkhir(Lokasi lokasi_akhir)
+    {
         this.lokasi_akhir = lokasi_akhir;
     }
     
-    public void setStatusDiproses(Boolean diproses){
+    /**
+     * Method untuk Men-set status sedang diproses
+     * @param diproses untuk status diproses
+     */
+    public void setStatusDiproses(boolean diproses)
+    {
         this.diproses = diproses;
     }
     
-    
-    public void setStatusSelesai(Boolean selesai){
+    /**
+     * Method untuk Men-set status sudah selesai
+     * @param selesai untuk status selesai
+     */
+    public void setStatusSelesai(boolean selesai)
+    {
         this.selesai = selesai;
     }
-    
 }

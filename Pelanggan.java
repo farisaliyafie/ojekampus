@@ -12,37 +12,41 @@ import java.util.GregorianCalendar;
 public class Pelanggan extends User
 {
     /**
-     * Constructor Pelanggan. 
-     * Metode yang pertama kali dipanggil ketika sebuah object dari kelas pelanggan diciptakan.
-     * @param int id    id pelanggan untuk object pelanggan baru.
-     * @param String nama   nama pelanggan untuk object pelanggan baru.
+     * Constructor yang telah dibuat saat kelas Pelanggan dibuat berisi nama dan id.
+     * @param id untuk id pelanggan
+     * @param nama untuk nama pelanggan
      */
-    public Pelanggan(int id, String nama, String telefon) 
+    public Pelanggan(int id, String nama, String telefon)
     {
-        // initialise instance variables
-        super(id,nama);
-        setTelefon(telefon);
+        super.id=id;
+        super.nama=nama;
+        this.setTelefon(telefon);
     }
     
-    public Pelanggan(int id, String nama, String email, String telefon, Date dob) 
+    public Pelanggan(int id, String nama, String telefon, String email)
     {
-        // initialise instance variables
-        super(id,nama);
-        setEmail(email);
-        setTelefon(telefon);
-        setDOB(dob);
+        super.id = id;
+        super.nama = nama;
+        super.telefon = telefon;
+        super.email = email;
+    }
+    
+    public Pelanggan(int id, String nama, String telefon, String email, Date dob)
+    {
+        super.nama = nama;
+        super.telefon = telefon;
+        super.email = email;
+        super.dob = dob;
     }
     
     /**
-     * printData. 
-     * Metode untuk mencetak data pelanggan.
-     */    
+     * Method toString untuk menampilkan data dari pelanggan.
+     */
     public String toString(){
         if(DatabasePesanan.getPesanan(this) == null){
-            return "Pelanggan" + " Nama : "+ nama + " Id : "+ id + "No.Tlp : " + telefon + "||";
+            return "Pelanggan" + " Nama : "+ nama + " Id : "+ id + "No.Tlp : " + telefon + "|";
         }
         Pesanan temp = DatabasePesanan.getPesanan(this);
-        return "Pelanggan" + " Nama : "+ nama + " Id : "+ id + "No.Tlp : " + telefon + " Pelanggan Awal :" + temp.getPenggunaAwal() + "||";
+        return "Pelanggan" + " Nama : "+ nama + " Id : "+ id + "No.Tlp : " + telefon + " Pelanggan Awal :" + temp.getPenggunaAwal() + "|";
     } 
-    
 }

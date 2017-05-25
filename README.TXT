@@ -6,7 +6,7 @@ all he/she needs to know. The comments should usually include at least:
 
 PROJECT TITLE: OjeKampus
 PURPOSE OF PROJECT: OOP
-VERSION or DATE: 29 April 2017
+VERSION or DATE: 24 Mei 2017
 HOW TO START THIS PROJECT: not useable in this version
 AUTHORS: Faris Ali Yafie
 USER INSTRUCTIONS: not useable in this version
